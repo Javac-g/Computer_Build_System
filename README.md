@@ -1,7 +1,7 @@
 ### Computer_Build_System
 This is my graduation university project.
-The porpose of my project is to create a informational system, which can calculate prise of assembling custom pc and configure components compatibility.
-I divided my project on few stages.
+The porpose of my project is to create a informational system, which can calculate prise of assembling custom pc and configure components compatibility.<br>
+I divided my project on few stages.<br>
 1)Create database architecture and fill csv with suitable components list.I have choose best on the market.(CPU,GPU,MotherBoard,Storage,RAm)
 <br>
 2)Create algorythm to divide compartible components.
