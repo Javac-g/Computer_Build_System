@@ -1,5 +1,6 @@
 package com.anobel.controller;
 
+import ch.qos.logback.core.model.Model;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
@@ -24,9 +25,8 @@ public class testController {
         logger.info("https://192.168.0.103:8089/test/hello");
         return String.format("Hello %s",name);
     }
-    @RequestMapping("/index")
-    @ResponseBody
-    public String mainPage(){
+    @RequestMapping({"/","index"})
+    public String index(Model model){
         logger.info("https://192.168.0.103:8089/test/index");
         return "templates/Login";
     }
