@@ -2,7 +2,13 @@ package com.anobel.model;
 
 import com.anobel.model.parts.*;
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "Assembly")
 public class Assembly {
@@ -36,7 +42,18 @@ public class Assembly {
     @JoinColumn(name = "gpu_id")
     private Gpu gpu;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Assembly assembly = (Assembly) o;
+        return getId() != null && getId().equals(assembly.getId());
+    }
 
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 
 }
