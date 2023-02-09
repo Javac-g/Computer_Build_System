@@ -24,7 +24,7 @@ public class Cpu {
     private Integer core_count;
 
     @Max(25)
-    @Column(name = "manufacturer",nullable = false)
+    @Column(name = "manufacturer",nullable = false,insertable=false, updatable=false)
     private String manufacturer;
 
     @Column(name = "performance_core_clock",nullable = false)

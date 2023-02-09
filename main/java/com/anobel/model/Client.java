@@ -25,7 +25,7 @@ public class Client {
 
     @Pattern(regexp = "[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}",message = "must be valid email adress")
     @Column(name = "email",nullable = false,unique = true)
-    private String login;
+    private String email;
 
     @Pattern(regexp = "[A-Za-z\\d]{6,}", message="Must be 6 symbols long")
     @Pattern(regexp = ".*\\d.*", message = "Must have at least one number")
