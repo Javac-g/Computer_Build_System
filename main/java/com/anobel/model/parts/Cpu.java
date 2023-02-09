@@ -1,0 +1,38 @@
+package com.anobel.model.parts;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "CPU_list")
+@NoArgsConstructor
+public class Cpu {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "TDP",nullable = false)
+    private Integer tdp;
+
+    @Column(name = "core_count",nullable = false)
+    private Integer core_count;
+
+    @Max(25)
+    @Column(name = "manufacturer",nullable = false)
+    private String manufacturer;
+
+    @Column(name = "performance_core_clock",nullable = false)
+    private Integer performance_core_clock;
+
+    @Column(name = "performance_boost_clock",nullable = false)
+    private Integer performance_boost_clock;
+
+    @Max(25)
+    @Column(name = "manufacturer",nullable = false)
+    private String integrated_graphics;
+}
