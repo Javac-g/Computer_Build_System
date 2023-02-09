@@ -14,7 +14,8 @@ import lombok.Setter;
 public class Gpu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id",nullable = false)
     private Long id;
 
     @Column(name = "memory",nullable = false)

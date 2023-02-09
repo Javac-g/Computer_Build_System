@@ -8,7 +8,8 @@ import jakarta.persistence.*;
 public class Assembly {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id",nullable = false)
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)

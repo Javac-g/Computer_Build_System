@@ -13,7 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Cpu {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id",nullable = false)
     private Long id;
 
     @Column(name = "TDP",nullable = false)

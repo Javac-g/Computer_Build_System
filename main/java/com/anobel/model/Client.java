@@ -2,14 +2,23 @@ package com.anobel.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
-import java.util.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.util.List;
 
+@ToString
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "Clients")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id",nullable = false)
     private long id;
 
 
@@ -39,9 +48,14 @@ public class Client {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @ManyToOne
-    @JoinTable(name = "Order", joinColumns = @JoinColumn(name = ""))
-    private List<Order> myOders;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "active_orders",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id")
+    )
+    @ToString.Exclude
+    private List<Order> orders;
+
 
 
 }
