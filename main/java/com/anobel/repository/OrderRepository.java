@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface orderRepository extends JpaRepository<Order,Long> {
+public interface OrderRepository extends JpaRepository<Order,Long> {
 
     @Query(value = "SELECT * FROM active_orders WHERE client_id = userId ", nativeQuery = true)
     List<Order> getByClientId(long userId);
