@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@Table(name = "Clients")
+@Table(name = "clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -23,7 +23,7 @@ public class Client {
     private Long id;
 
 
-    @Pattern(regexp = "[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}",message = "must be valid email adress")
+    @Pattern(regexp = "[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}",message = "must be valid email address")
     @Column(name = "email",nullable = false,unique = true)
     private String email;
 

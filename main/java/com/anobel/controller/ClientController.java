@@ -9,9 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/ClientController")
+
 @Controller
 public class ClientController {
     private final static Logger logger = LoggerFactory.getLogger(ClientController.class);
@@ -20,8 +19,9 @@ public class ClientController {
     private ApplicationContext applicationContext;
 
     @Autowired
-    @Qualifier(value = "ClientServiceImpl")
-    private ClientService clientService;
+    @Qualifier("ClientServiceImpl")
+    private  ClientService clientService;
+
 
     @GetMapping("/clients")
     public String listClients(Model model){

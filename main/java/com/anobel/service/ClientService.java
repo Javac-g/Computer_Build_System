@@ -5,5 +5,10 @@ import com.anobel.model.Client;
 import java.util.List;
 
 public interface ClientService {
+    Client create(Client client);
+     Client readById(long id);
+     Client update(long id,Client client);
+     void delete(long id);
+
     List<Client> getAllClients();
 }

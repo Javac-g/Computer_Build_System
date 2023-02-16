@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html xmlns:th  = "http://www.thymeleaf.org" lang="eng">
 <head>
     <meta charset="UTF-8">
     <title>Clients Management</title>
 </head>
 <body>
+    <div class = "container">
+        <div class = "row">
+            <h1>
+               List of Clients
+            </h1>
+        </div>
+        <table class = "table table-striped table-bordered">
+            <thead class = "table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Discount</th>
+                    <th>Order #</th>
+                    <th>Role</th>
+                    <th>password</th>
 
+                </tr>
+            </thead>
+            <tbody>
+                <!--/*@thymesVar id="clients" type="Client"*/-->
+                <tr th:each = "Client : ${clients}">
+                    <td th:text = "${Client.getFirstName()}"></td>
+                    <td th:text = "${Client.secondName}"></td>
+                    <td th:text = "${Client.email}"></td>
+                    <td th:text = "${Client.getDiscount()}"></td>
+                    <td th:text = "${Client.getOrders_number()}"></td>
+                    <td th:text = "${Client.getRole().getName()}"></td>
+                    <td th:text = "${Client.getPassword()}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
