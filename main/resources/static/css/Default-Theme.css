@@ -1,0 +1,270 @@
+@charset "UTF-8";
+
+/******************************************************************************/
+/* A dark color theme for websites.                                           */
+/*                                                                            */
+/* It consists of dark shades of grey, and uses amber as a color for accents. */
+/******************************************************************************/
+body
+{
+	background-color: #303030;
+	color: #fff; /* fallback in case rgba() doesn't work. */
+	color: rgba(255,255,255, 0.7);
+	/* Default font on most browsers is serif, which looks somewhat dated. */
+	font-family: sans-serif;
+}
+
+/* Make the selection the accent color, and maintain contrast. */
+::selection
+{
+	color: #000;
+	background-color: #FFC107;
+}
+/* Firefox wants to be special. */
+::-moz-selection
+{
+	color: #000;
+	background-color: #FFC107;
+}
+
+/******************************************************************************/
+
+/******************************************************************************/
+body > header
+{
+	z-index: 1;
+
+	color: rgba(255, 255, 255, 0.7);
+	background-color: #212121;
+	box-shadow: 0 0px 8px #000;
+	text-align:center;
+	
+
+}
+
+/******************************************************************************/
+
+/******************************************************************************/
+fieldset
+{
+	/* Make the border slightly more sublte. */
+	border: solid thin #212121;
+	margin-bottom: 0.5em;
+}
+
+/******************************************************************************/
+/* General styling for labels and inputs.                                     */
+/******************************************************************************/
+label
+{
+	/* Put each label on its own line. */
+	display: block;
+}
+
+input,
+textarea,
+select,
+button
+{
+	/* Put each input on its own line, giving it full width. Its parent is */
+	/* responsible for constraining its size. */
+	display: block;
+	box-sizing: border-box;
+	width: 25%;
+	
+
+	/* Let the styling on the rest of the page affect input elements as well. */
+	font-family: inherit;
+	font-size: inherit;
+
+	color: inherit;
+	background-color: #212121;
+
+	/* No need for a border due to background color and drop shadow. */
+	border: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	/* The border tend to become somewhat snug by default. Add some space. */
+	padding: 0.5em;
+
+	/* Add some space between the label and next element. */
+	margin-top: 0.25em;
+	margin-bottom: 1em;
+}
+
+input:focus,
+textarea:focus
+{
+	/* Provide some feedback as to which element has focus. */
+	/* The label should be closer to the object to which it applies. */
+	outline: solid medium #FFC107;
+}
+
+/******************************************************************************/
+/* Styling for text related elements.                                         */
+/******************************************************************************/
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+/* TODO: Add more text styles like email. */
+textarea
+{
+	/* Slightly darker than the background to catch the eye. */
+	background-color: #212121;
+	/* Shadow to suggest depth. */
+	box-shadow: inset 0 1px 2px #000;
+
+	/* Default appearance for the element might not look too great. */
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+textarea
+{
+	/* Textareas typically contain more text, so it should be taller. */
+	height: 5em;
+	/* Keep the width of the elements consistent, but allow for resizing. */
+	resize: vertical;
+}
+
+/******************************************************************************/
+
+/******************************************************************************/
+
+button
+{
+	display: inline-block;
+	width: auto;
+	box-shadow: 0 1px 2px #000;
+	padding: 10px;
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	text-decoration: none;
+}
+button + button
+{
+	margin-left: 1em;
+}
+button:hover
+{
+
+}
+button:active
+{
+
+}
+
+/******************************************************************************/
+/* Styling for Checkboxes.                                                    */
+/*                                                                            */
+/* Checkboxes typically appear in front of the label. Assuming that label is  */
+/* the last element in the child of its parent, it can be inferred it belongs */
+/* to the checkbox, so it can be styled instead, as it has more options.      */
+/******************************************************************************/
+.ipsCustomInput
+{
+	font: initial;
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	position: relative;
+}
+
+.ipsCustomInput input[type="checkbox"]
+{
+	position: absolute;
+	box-sizing: content-box;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	border:none;
+	outline: none;
+	padding: 0;
+
+	opacity: 0;
+}
+.ipsCustomInput input[type="checkbox"] + span::after
+{
+		/* Required to make the pseudo-element show up. */
+		content: "";
+		pointer-events: none;
+		position: absolute;
+		/* Place the checkbox at the same line as the text. */
+		display: inline-block;
+		/* The size should match the text to some degree. */
+		height: 100%;
+		width: 100%;
+		/* Some space between the icon and text. */
+		margin-right: 0.25em;
+		vertical-align: baseline;
+		/* A checkbox typically isn't a pattern. */
+		background-repeat: no-repeat;
+		/* Scale the image up or down based on the font size. */
+		background-size: contain;
+		background-position: center;
+		background-image: url(../res/ui/dusk/checkbox.svg);
+}
+
+.ipsCustomInput input[type="checkbox"]:checked + span::after
+{
+	/* Give the user feedback that it has been checked. */
+	background-image: url(../res/ui/dusk/checkbox-checked.svg);
+
+}
+
+.ipsCustomInput + label
+{
+	margin-left: 0.25em;
+	display: inline-block;
+}
+
+
+/******************************************************************************/
+/* Styling for Selections.                                                    */
+/*                                                                            */
+/* Checkboxes typically appear in front of the label. Assuming that label is  */
+/* the last element in the child of its parent, it can be inferred it belongs */
+/* to the checkbox, so it can be styled instead, as it has more options.      */
+/******************************************************************************/
+select
+{
+	box-shadow: 0 1px 2px #000;
+
+	/* Draw a custom arrow on the select element. */
+	background-image: url(../res/ui/dusk/select-arrow.svg);
+	background-position: right;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+
+/******************************************************************************/
+
+/******************************************************************************/
+
+pre
+{
+	box-shadow: inset 0 1px 2px #000;
+	font-size: inherit;
+	font-family: monospace;
+	padding: 10px;
+	line-height: 1em;
+	background-color: #212121;
+	color: inherit;
+}
+
+a
+{
+	color: #FFC107;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}

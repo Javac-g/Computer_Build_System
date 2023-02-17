@@ -2,25 +2,26 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Sign Up</title>
-		<link rel="stylesheet" type="text/css" href="../../../../../../Desktop/Desctop/artproject2020/cardmaker-master/css/Style.css" />
-		<link rel="stylesheet" type="text/css" href="../../../../../../Desktop/Desctop/artproject2020/cardmaker-master/css/Default-Theme.css" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 	</head>
 	<body>
 		<header>
-			<h1>Computer Assembly System</h1>
+			<h1>Create new user</h1>
 		</header>
 		<br>
 		<br>
 		<br>
 		<article class = "content">
 			<div class ="editor">
-				<label>First Name<input type="text" ></label>
-				<label>Second Name<input type="text"></label>
-				<label>Login<input type="text" ></label>
-				<label>Email<input type="email" ></label>
-				<label>Password<input type="password" ></label>
-				<button class="ipsButton ipsButton_primary"><a href="">Confirm</a></button>
-				<button class="ipsButton ipsButton_primary"><a href="Login.html">Main</a></button></button>
+				<form th:action = "@{/clients}" th:object = "${client}" method="POST">
+					<label>First Name<input type="text" name = "firstName" th:field="*{client.firstName}" placeholder = "Enter name"></label>
+					<label>Second Name<input type="text"name = "secondName" th:field="*{secondName}" placeholder = "Enter second name"></label>
+					<label>Email<input type="email" name = "email" th:field="*{email}" placeholder = "Enter email"></label>
+					<label>Password<input type="password" name = "password" th:field="*{password}" ></label>
+					<button type = "submit"class="ipsButton ipsButton_primary">Confirm</a></button>
+			
+				</form>
 			</div>
 		</article>
 	</body>

@@ -2,7 +2,10 @@
 <html xmlns:th  = "http://www.thymeleaf.org" lang="eng">
 <head>
     <meta charset="UTF-8">
-    <title>Clients Management</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clients Managementxmlns:th  = "http://www.thymeleaf.org" lang="eng"</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 </head>
 <body>
     <div class = "container">
@@ -27,7 +30,7 @@
             <tbody>
                 <!--/*@thymesVar id="clients" type="Client"*/-->
                 <tr th:each = "Client : ${clients}">
-                    <td th:text = "${Client.getFirstName()}"></td>
+                    <td th:text = "${Client.firstName()}"></td>
                     <td th:text = "${Client.secondName}"></td>
                     <td th:text = "${Client.email}"></td>
                     <td th:text = "${Client.getDiscount()}"></td>

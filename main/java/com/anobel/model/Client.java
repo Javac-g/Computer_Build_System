@@ -28,9 +28,6 @@ public class Client {
     private String email;
 
     @Pattern(regexp = "[A-Za-z\\d]{6,}", message="Must be 6 symbols long")
-    @Pattern(regexp = ".*\\d.*", message = "Must have at least one number")
-    @Pattern(regexp = ".*[A-Z].*", message="Must have at east one uppercase letter")
-    @Pattern(regexp = ".*[a-z].*", message="Must have at east one lowercase letter")
     @Column(name = "password", nullable = false)
     private String password;
 

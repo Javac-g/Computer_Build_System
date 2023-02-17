@@ -1,5 +1,6 @@
 package com.anobel.controller;
 
+import com.anobel.model.Client;
 import com.anobel.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -27,6 +30,17 @@ public class ClientController {
     public String listClients(Model model){
         model.addAttribute("clients",clientService.getAllClients());
         return "clients";
+    }
+    @GetMapping("/signup")
+    public String createStudent(Model model){
+        Client client = new Client();
+        model.addAttribute("client",client);
+        return "SignUp";
+    }
+    @PostMapping("/clients")
+    public String saveClient(@ModelAttribute("client") Client client){
+        clientService.create(client);
+        return "redirect:/clients";
     }
 
 }
