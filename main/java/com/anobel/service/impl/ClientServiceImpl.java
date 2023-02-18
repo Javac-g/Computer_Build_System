@@ -1,5 +1,5 @@
 package com.anobel.service.impl;
-
+import com.anobel.model.Role;
 import com.anobel.exception.NullEntityReferenceException;
 import com.anobel.model.Client;
 import com.anobel.repository.ClientRepository;
@@ -26,6 +26,9 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client create(Client client) {
         if (client != null) {
+			Role user = new Role();
+			user.setId(1L);
+			client.setRole(user);
             return clientRepository.save(client);
         }
         throw new NullEntityReferenceException("Client cannot be null");

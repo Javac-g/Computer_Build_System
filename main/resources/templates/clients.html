@@ -30,9 +30,9 @@
             <tbody>
                 <!--/*@thymesVar id="clients" type="Client"*/-->
                 <tr th:each = "Client : ${clients}">
-                    <td th:text = "${Client.firstName()}"></td>
-                    <td th:text = "${Client.secondName}"></td>
-                    <td th:text = "${Client.email}"></td>
+                    <td th:text = "${Client.getFirstName()}"></td>
+                    <td th:text = "${Client.getSecondName}"></td>
+                    <td th:text = "${Client.getEmail}"></td>
                     <td th:text = "${Client.getDiscount()}"></td>
                     <td th:text = "${Client.getOrders_number()}"></td>
                     <td th:text = "${Client.getRole().getName()}"></td>

@@ -1,5 +1,6 @@
 <html>
-	<head>
+	<head lang="eng" xmlns:th  = "http://www.thymeleaf.org" 
+			xmlns="http://www.w3.org/1999/xhtml">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
@@ -15,7 +16,7 @@
 		<article class = "content">
 			<div class ="editor">
 				<form th:action = "@{/clients}" th:object = "${client}" method="POST">
-					<label>First Name<input type="text" name = "firstName" th:field="*{client.firstName}" placeholder = "Enter name"></label>
+					<label>First Name<input type="text" name = "firstName" th:field="*{firstName}" placeholder = "Enter name"></label>
 					<label>Second Name<input type="text"name = "secondName" th:field="*{secondName}" placeholder = "Enter second name"></label>
 					<label>Email<input type="email" name = "email" th:field="*{email}" placeholder = "Enter email"></label>
 					<label>Password<input type="password" name = "password" th:field="*{password}" ></label>

@@ -1,6 +1,7 @@
 package com.anobel.controller;
 
 import com.anobel.model.Client;
+import com.anobel.model.Role;
 import com.anobel.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,8 @@ public class ClientController {
 
     @Autowired
     private ApplicationContext applicationContext;
-
-    @Autowired
     @Qualifier("ClientServiceImpl")
+    @Autowired
     private  ClientService clientService;
 
 
@@ -31,11 +31,12 @@ public class ClientController {
         model.addAttribute("clients",clientService.getAllClients());
         return "clients";
     }
-    @GetMapping("/signup")
-    public String createStudent(Model model){
+    @GetMapping("/clients/new")
+    public String createClient(Model model){
         Client client = new Client();
+		
         model.addAttribute("client",client);
-        return "SignUp";
+        return "create_client";
     }
     @PostMapping("/clients")
     public String saveClient(@ModelAttribute("client") Client client){
