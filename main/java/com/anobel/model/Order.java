@@ -56,7 +56,7 @@ public class Order {
     @Column(name = "order_status",nullable = false)
     private String order_status;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne()
     @JoinColumn(name = "assembly_id")
     private Assembly assembly;
 

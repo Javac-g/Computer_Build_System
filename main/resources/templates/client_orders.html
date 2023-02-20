@@ -11,9 +11,9 @@
 <body>
 <div class = "container">
     <div class = "row">
-        <h1 th:text="${'All Orders of' + client.getName() + ' ' + client.getSecondName()}"></h1>
+        <h1 th:text="${'All orders of ' + ' ' + client.getFirstName() + ' ' + client.getSecondName()}"></h1>
     </div>
-    <form th:action="">
+    <form>
 
     </form>
     <table class = "table table-striped table-bordered">
@@ -47,7 +47,6 @@
             <td th:text = "${order.getTotal_price()}"></td>
             <td th:text = "${order.getOrder_date()}"></td>
             <td th:text = "${order.getOrder_status()}"></td>
-            <td th:text = "${order.getAssembly()}"></td>
             <button></button>
 
         </tr>

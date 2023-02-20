@@ -26,8 +26,9 @@
                     <th>Order №</th>
                     <th>Role</th>
                     <th>Password</th>
-					<th>Actions</th>
 					<th>Orders</th>
+					<th>Actions</th>
+					
 					
                 </tr>
             </thead>
@@ -41,8 +42,7 @@
                     <td th:text = "${Client.getOrders_number()}"></td>
                     <td th:text = "${Client.getRole().getName()}"></td>
                     <td th:text = "${Client.getPassword()}"></td>
-                    <td th:text = ""></td>
-                    <td> <button><a th:href= "@{/orders/privateOrders/{id}(id=${Client.getId()})}"></a> </button></td>
+                    <td> <button type ="button"><a th:href= "@{/orders/privateOrders/{id}(id=${Client.getId()})}">orders </a></button></td>
 
                 </tr>
             </tbody>
