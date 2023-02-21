@@ -1,7 +1,6 @@
 package com.anobel.controller;
 
 import com.anobel.model.Client;
-import com.anobel.model.Role;
 import com.anobel.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -43,5 +43,24 @@ public class ClientController {
         clientService.create(client);
         return "redirect:/clients";
     }
+    @GetMapping("/clients/edit/{id}")
+    public String editClient(@PathVariable Long id,Model model){
+        model.addAttribute("client",clientService.readById(id));
+        return "edit_client";
+    }
+    @PostMapping("/clients/{id}")
+    public String updateClient(@PathVariable Long id ,@ModelAttribute("client") Client client, Model model){
+        
+        clientService.update(id,client);
+        return "redirect:/clients";
+    }
+	@GetMapping("/clients/{id}")
+	public String deleteClient(@PathVariable Long id){
+		clientService.delete(id);
+		return "redirect:/clients";
+
+	}
+	
+	
 
 }

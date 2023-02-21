@@ -1,12 +1,13 @@
-<html>
-	<head lang="eng" xmlns:th  = "http://www.thymeleaf.org" 
-			xmlns="http://www.w3.org/1999/xhtml">
+<html lang="eng" xmlns:th  = "http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+	<head >
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 	</head>
 	<body>
+	
 		<header>
 			<h1>Create new user</h1>
 		</header>
@@ -20,7 +21,7 @@
 					<label>Second Name<input type="text"name = "secondName" th:field="*{secondName}" placeholder = "Enter second name"></label>
 					<label>Email<input type="email" name = "email" th:field="*{email}" placeholder = "Enter email"></label>
 					<label>Password<input type="password" name = "password" th:field="*{password}" ></label>
-					<button type = "submit"class="ipsButton ipsButton_primary">Confirm</a></button>
+					<button type = "submit"class="ipsButton ipsButton_primary">Confirm</button>
 			
 				</form>
 			</div>

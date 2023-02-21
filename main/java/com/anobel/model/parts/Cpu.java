@@ -17,7 +17,7 @@ public class Cpu {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    @Column(name = "TDP",nullable = false)
+    @Column(name = "tdp",nullable = false)
     private Integer tdp;
 
     @Column(name = "core_count",nullable = false)

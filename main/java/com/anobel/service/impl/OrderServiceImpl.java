@@ -30,4 +30,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order>findAll(){
         return orderRepository.findAll();
     }
+	@Override
+	public Order findById(long id){
+		return orderRepository.findById(id).get();
+		
+	}
 }

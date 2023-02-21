@@ -11,7 +11,6 @@ import org.hibernate.Hibernate;
 import java.util.List;
 
 @ToString
-@NoArgsConstructor
 @Setter
 @Getter
 @Entity
@@ -19,12 +18,12 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
 
     @Pattern(regexp = "[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}",message = "must be valid email address")
-    @Column(name = "email",nullable = false,unique = true)
+    @Column(name = "email", nullable = false,unique = true)
     private String email;
 
     @Pattern(regexp = "[A-Za-z\\d]{6,}", message="Must be 6 symbols long")
@@ -34,7 +33,7 @@ public class Client {
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "second_name",nullable = false)
+    @Column(name = "second_name", nullable = false)
     private String secondName;
 
     @Column(name = "discount")
@@ -45,8 +44,8 @@ public class Client {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-
-    @ManyToMany(fetch = FetchType.LAZY)
+	
+    @ManyToMany()
     @JoinTable(name = "active_orders",
             joinColumns = @JoinColumn(name = "client_id"),
             inverseJoinColumns = @JoinColumn(name = "order_id")
@@ -67,4 +66,9 @@ public class Client {
     public int hashCode() {
         return getClass().hashCode();
     }
+	public Client(){
+		Role user = new Role();
+		user.setId(1L);
+		this.role = user;
+	}
 }

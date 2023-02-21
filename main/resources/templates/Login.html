@@ -2,11 +2,15 @@
 
 	<head>
 		<meta charset="utf-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-			<title>Entrance page</title>
-			<link rel="stylesheet" type="text/css" href="../../../../../../Desktop/Desctop/artproject2020/cardmaker-master/css/Style.css" />
-			<link rel="stylesheet" type="text/css" href="../../../../../../Desktop/Desctop/artproject2020/cardmaker-master/css/Default-Theme.css" />
+		<title>Entrance page</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 	</head>
 		 
 	<body>
@@ -18,10 +22,10 @@
 		<article class = "content">
 			<section align ="center">
 				<button class="ipsButton ipsButton_primary">
-					<a href="create_client.html">Sign up</a>
+					<a th:href="create_client.html">Sign up</a>
 				</button>
 				<button class="ipsButton ipsButton_primary">
-					<a href="LogUp.html">Login</a>
+					<a th:href="LogUp.html">Login</a>
 				</button>
 			</section>
 		</article>

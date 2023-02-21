@@ -1,0 +1,92 @@
+
+<html xmlns:th  = "http://www.thymeleaf.org" lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Assembly	info</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+<div class = "container">
+    <div class = "row">
+        <h1 th:text="${'Assembly info of your order:'}"></h1>
+    </div>
+   
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr class = "tab">
+
+            <th>CPU</th>
+            <th>GPU</th>
+            <th>Storage</th>
+            <th>Motherboard</th>
+            <th>RAM</th>
+           
+          
+
+        </tr>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="order" type="Order"*/-->
+        <tr th:object = "${assembly}">
+          
+           <tr> <td th:text = "${'CPU Manufacturer: '+ assembly.getCpu().getManufacturer()}"></td>
+				<td th:text = "${'GPU Manufacturer: '+ assembly.getGpu().getManufacturer()}"></td>
+				<td th:text = "${'Storage Manufacturer: '+ assembly.getStorage().getManufacturer()}"></td>
+				<td th:text = "${'Motherboard Manufacturer: '+ assembly.getMotherboard().getManufacturer()}"></td>
+				<td th:text = "${'RAM Manufacturer: '+ assembly.getRam().getManufacturer()}"></td>
+			</tr>
+            <tr>
+			<td th:text = "${'CPU core_count: '+ assembly.getCpu().getCore_count()}"></td>
+			<td th:text = "${'GPU Max memory: '+ assembly.getGpu().getMemory() + ' Gb'}"></td>
+			<td th:text = "${'Storage capacity: '+ assembly.getStorage().getCapacity() + ' Gb'}"></td>
+			<td th:text = "${'Motherboard memory slots: '+ assembly.getMotherboard().getMemory_slots()}"></td>
+			<td th:text = "${'RAM Speed: '+ assembly.getRam().getSpeed()}"></td>
+			</tr>
+            <tr>
+			<td th:text = "${'CPU performance_core_clock: '+ assembly.getCpu().getPerformance_core_clock()}"></td>
+			<td th:text = "${'GPU Core_clock: '+ assembly.getGpu().getCore_clock()}"></td>
+			<td th:text = "${'Storage Type: '+ assembly.getStorage().getType()}"></td>
+			<td th:text = "${'Motherboard socket: '+ assembly.getMotherboard().getSocket_cpu()}"></td>
+			<td th:text = "${'RAM Modules: '+ assembly.getRam().getModules()}"></td>
+			</tr>
+            <tr>
+			<td th:text = "${'CPU performance_boost_clock: '+ assembly.getCpu().getPerformance_boost_clock()}"></td>
+			<td th:text = "${'GPU boost_clock: '+ assembly.getGpu().getBoost_clock()}"></td>
+			<td th:text = "${'    '}"></td>
+			<td th:text = "${'Motherboard form factor: ' + assembly.getMotherboard.getForm_factor()}"></td>
+			</tr>
+            <tr>
+			<td th:text = "${'CPU integrated_graphics: '+ assembly.getCpu().getIntegrated_graphics()}"></td>
+			<td th:text = "${'GPU chipset: '+ assembly.getGpu().getChipset()}"></td>
+			<td th:text = "${' '}"></td>
+			<td th:text = "${'Motherboard Max memory: '+ assembly.getMotherboard().getMemory_max() + ' Gb'}"></td>
+			</tr>
+
+            
+
+        </tr>
+		
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
