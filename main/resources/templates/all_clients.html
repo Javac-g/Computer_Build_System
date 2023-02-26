@@ -38,9 +38,9 @@
 				
                 <tr th:each = "client : ${clients}">
 					<td th:text = "${client.getId()}"></td>
-                    <td th:text = "${client.getFirstName()}"></td>
-                    <td th:text = "${client.getSecondName}"></td>
-                    <td th:text = "${client.getEmail}"></td>
+                    <td th:text = "${client.getFullName()}"></td>
+                    <td th:text = "${client.getLogin()}"></td>
+                    <td th:text = "${client.getEmail()}"></td>
                     <td th:text = "${client.getDiscount()}"></td>
                     <td th:text = "${client.getOrders_number()}"></td>
                     <td th:text = "${client.getRole().getName()}"></td>
@@ -48,9 +48,9 @@
                     <td> <button type ="button"><a th:href= "@{/orders/privateOrders/{id}(id=${client.getId()})}">orders </a></button></td>
 					
                     <td> 
-					<button type = "button"><a th:href = "@{clients/edit/{id}(id = ${client.getId()})}">Update</a></button>
+					<button type = "button"><a th:href = "@{/clients/edit/{id}(id = ${client.getId()})}">Update</a></button>
 					 
-					<button type = "button"> <a th:href = "@{clients/{id}(id = ${client.getId()})}">Delete</a></button></td>
+					<button type = "button"> <a th:href = "@{/clients/all/{id}(id = ${client.getId()})}">Delete</a></button></td>
 					
                 </tr>
 				

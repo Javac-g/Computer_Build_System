@@ -207,13 +207,13 @@ button:active
 		/* Scale the image up or down based on the font size. */
 		background-size: contain;
 		background-position: center;
-		background-image: url(../res/ui/dusk/checkbox.svg);
+		background-image: url(../../templates/res/ui/dusk/checkbox.svg);
 }
 
 .ipsCustomInput input[type="checkbox"]:checked + span::after
 {
 	/* Give the user feedback that it has been checked. */
-	background-image: url(../res/ui/dusk/checkbox-checked.svg);
+	background-image: "../templates/res/ui/dusk/checkbox-checked.svg";
 
 }
 
@@ -236,7 +236,7 @@ select
 	box-shadow: 0 1px 2px #000;
 
 	/* Draw a custom arrow on the select element. */
-	background-image: url(../res/ui/dusk/select-arrow.svg);
+	background-image: url(../../templates/res/ui/dusk/select-arrow.svg);
 	background-position: right;
 	background-size: contain;
 	background-repeat: no-repeat;

@@ -4,11 +4,11 @@ import com.anobel.exception.NullEntityReferenceException;
 import com.anobel.model.Client;
 import com.anobel.model.Role;
 import com.anobel.repository.ClientRepository;
+import com.anobel.repository.RoleRepository;
 import com.anobel.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 
 import java.util.List;
 
@@ -16,8 +16,11 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
     @Autowired
     private  ClientRepository clientRepository;
-	//@Autowired
-	//private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private RoleRepository roleRepository ;
+	@Autowired
+	private  PasswordEncoder passwordEncoder;
 
     @Override
     public List<Client> getAllClients() {
@@ -29,10 +32,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client create(Client client) {
         if (client != null) {
-			Role user = new Role();
-			user.setId(1L);
-			client.setRole(user);
-			//client.setPassword(passwordEncoder.encode(client.getPassword()));
+            Role user = roleRepository.findById(1L).get();
+
+            client.setRole(user);
+			client.setPassword(passwordEncoder.encode(client.getPassword()));
             return clientRepository.save(client);
         }
         throw new NullEntityReferenceException("Client cannot be null");
@@ -50,14 +53,15 @@ public class ClientServiceImpl implements ClientService {
         if (client1 != null){
              
 			client1.setId(id);
-            client1.setFirstName(client.getFirstName());
-            client1.setSecondName(client.getSecondName());
+            client1.setFullName(client.getFullName());
+            client1.setLogin(client.getLogin());
             client1.setDiscount(client.getDiscount());
             client1.setEmail(client.getEmail());
-            client1.setPassword(client.getPassword());
+            client1.setPassword(passwordEncoder.encode(client.getPassword()));
+            Role user = new Role();
+			user.setId(1L);
+            client1.setRole(user);
             
-            client1.setRole(client.getRole());
-            client1.setId(client.getId());
 
             return clientRepository.save(client1);
         }

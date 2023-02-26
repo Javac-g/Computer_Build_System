@@ -7,19 +7,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
-</nav>
+
 <header>
     <h1>Update client</h1>
 </header>
@@ -28,10 +16,18 @@
 <br>
 <article class = "content">
     <div class ="editor">
-        <form th:action = "@{/clients/{id}(id = ${client.getId()})}" th:object = "${client}" method="POST">
+        <form th:action = "@{/clients/edit/{id}(id = ${client.getId()})}" th:object = "${client}" method="POST">
 			<label>Id<input type="text" name = "id" th:field="*{id}" placeholder = "Enter id"></label>
-            <label>First Name<input type="text" name = "firstName" th:field="*{firstName}" placeholder = "Enter new name"></label>
-            <label>Second Name<input type="text" name = "secondName" th:field="*{secondName}" placeholder = "Enter new second name"></label>
+            <label>First Name<input type="text" name = "fullName" th:field="*{fullName}" th:value = "${client.getFullName()}" placeholder = "Enter full name"></label>
+            <label>Login<input type="text" name = "login" th:field="*{login}" th:value = "${client.getLogin()}"placeholder = "Enter login"></label>
+            <label for = "role">Role:</label>
+			<select id = "role" name = "role_id">
+				<span th:each = "role: ${roles}">
+					<option th:if ="${role.getId() == client.getRole().getId()}" th:selected = "${true}" th:text = "${role.getName()}"
+					th:value = "${role.getId()}">
+					<option th:text ="${role.getName()}" th:unless= "${role.getId() == client.getRole().getId()}" th:value = "${role.getId()}"
+					th:value = "${role.getId()}">
+				</span>
             <label>Email<input type="email" name = "email" th:field="*{email}" placeholder = "Enter email"></label>
             <label>Password<input type="password" name = "password" th:field="*{password}" ></label>
             <button type = "submit" class="ipsButton ipsButton_primary">Confirm</button>

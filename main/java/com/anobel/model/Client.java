@@ -2,20 +2,24 @@ package com.anobel.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @ToString
 @Setter
 @Getter
 @Entity
+@Data
+
 @Table(name = "clients")
-public class Client {
+public class Client implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -26,15 +30,15 @@ public class Client {
     @Column(name = "email", nullable = false,unique = true)
     private String email;
 
-    @Pattern(regexp = "[A-Za-z\\d]{6,}", message="Must be 6 symbols long")
+
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
 
-    @Column(name = "second_name", nullable = false)
-    private String secondName;
+    @Column(name = "login", nullable = false)
+    private String login;
 
     @Column(name = "discount")
     private double discount;
@@ -53,6 +57,18 @@ public class Client {
     @ToString.Exclude
     private List<Order> orders;
 
+    public Client() {
+
+    }
+
+    public Client(String email, String password, String fullName, String login, double discount, int orders_number) {
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+        this.login = login;
+        this.discount = discount;
+        this.orders_number = orders_number;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -66,9 +82,35 @@ public class Client {
     public int hashCode() {
         return getClass().hashCode();
     }
-	public Client(){
-		Role user = new Role();
-		user.setId(1L);
-		this.role = user;
-	}
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

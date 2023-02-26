@@ -1,0 +1,28 @@
+<html lang="eng" xmlns:th  = "http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+	<head >
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Sign Up</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
+	</head>
+	<body>
+	
+		<header>
+			<h1>Create new order</h1>
+		</header>
+		<h1>Choose motherboard</h1>
+		<form th:action = "" th:object = "${Mboard}">
+			<select th:field = "*{Mboard.getManufacturer()}">
+				
+			<option value = "">select motherboard</option>
+			<option th:each = "Motherboard : ${Mboard}"
+					th:value ="${Mboard.getManufacturer()}"
+					th:text = "${Motherboard}"></option>
+		</form>
+		<br>
+		<br>
+		<br>
+		
+	</body>
+</html>

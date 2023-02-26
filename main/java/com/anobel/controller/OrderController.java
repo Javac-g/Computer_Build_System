@@ -36,4 +36,8 @@ public class OrderController {
 		model.addAttribute("assembly",assembly);
 		return  "assembly_info";
 	}
+	@GetMapping("/new")
+	public String createOrder(){
+		return "create_order";
+	}
 }
