@@ -51,8 +51,7 @@ public class ClientController {
         if (result.hasErrors()){
             return "create_client";
         }
-        client.setRole(roleService.find(1L));
-        client.setPassword(passwordEncoder.encode(client.getPassword()));
+
         clientService.create(client);
         return "redirect:/clients/all";
     }

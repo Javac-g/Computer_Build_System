@@ -6,6 +6,7 @@ import com.anobel.model.Role;
 import com.anobel.repository.ClientRepository;
 import com.anobel.repository.RoleRepository;
 import com.anobel.service.ClientService;
+import com.anobel.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +23,9 @@ public class ClientServiceImpl implements ClientService {
 	@Autowired
 	private  PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private RoleService roleService;
+
     @Override
     public List<Client> getAllClients() {
 
@@ -32,7 +36,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client create(Client client) {
         if (client != null) {
-
+            client.setRole(roleService.find(1L));
+            client.setPassword(passwordEncoder.encode(client.getPassword()));
             return clientRepository.save(client);
         }
         throw new NullEntityReferenceException("Client cannot be null");
