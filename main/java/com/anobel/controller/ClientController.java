@@ -1,8 +1,8 @@
 package com.anobel.controller;
 
 import com.anobel.model.Client;
-import com.anobel.model.Role;
 import com.anobel.service.ClientService;
+import com.anobel.service.RoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,9 @@ public class ClientController {
     @Autowired
     private  ClientService clientService;
 
+    @Autowired
+    private RoleService roleService;
+
 
     
     @GetMapping("/all")
@@ -43,10 +47,11 @@ public class ClientController {
         return "create_client";
     }
     @PostMapping("/all")
-    public String saveClient(@Validated @ModelAttribute("client") Client client){
-        Role user = new Role();
-        user.setId(1L);
-        client.setRole(user);
+    public String saveClient(@Validated @ModelAttribute("client") Client client, BindingResult result){
+        if (result.hasErrors()){
+            return "create_client";
+        }
+        client.setRole(roleService.find(1L));
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         clientService.create(client);
         return "redirect:/clients/all";

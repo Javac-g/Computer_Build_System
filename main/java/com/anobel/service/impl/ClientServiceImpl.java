@@ -32,10 +32,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client create(Client client) {
         if (client != null) {
-            Role user = roleRepository.findById(1L).get();
 
-            client.setRole(user);
-			client.setPassword(passwordEncoder.encode(client.getPassword()));
             return clientRepository.save(client);
         }
         throw new NullEntityReferenceException("Client cannot be null");
