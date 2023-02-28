@@ -1,7 +1,11 @@
 package com.anobel.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "active_orders")
 public class Active_Orders {

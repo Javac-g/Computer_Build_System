@@ -85,6 +85,9 @@ public class Order {
                             ram_price.getLast_price()+
                             motherboard_price.getLast_price()+
                             storage_price.getLast_price();
+        if (discount != 0){
+            this.total_price *=discount;
+        }
         return this.total_price;
     }
 }

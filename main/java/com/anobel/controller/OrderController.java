@@ -6,12 +6,12 @@ import com.anobel.model.Order;
 import com.anobel.service.AssemblyService;
 import com.anobel.service.ClientService;
 import com.anobel.service.OrderService;
+import com.anobel.service.PriceService;
 import com.anobel.service.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -23,11 +23,13 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 	@Autowired
-    private OrderServiceImpl OrderServiceImpl;
+    private OrderServiceImpl orderServiceImpl;
 	@Autowired
     private ClientService clientService;
 	@Autowired
 	private AssemblyService assemblyService;
+	@Autowired
+	private PriceService priceService;
 
     @GetMapping("/privateOrders/{client_id}")
     public String myOrders(@PathVariable("client_id") Long id, Model model){
@@ -39,7 +41,7 @@ public class OrderController {
 	
 	@GetMapping("/privateOrders/info/{order_id}")
 	public String myOrderInfo(@PathVariable("order_id") Long id,Model model){
-		Order order = OrderServiceImpl.findById(id);
+		Order order = orderService.findById(id);
 		Assembly assembly = order.getAssembly();
 		model.addAttribute("assembly",assembly);
 		return  "assembly_info";
@@ -60,13 +62,20 @@ public class OrderController {
 	@PostMapping("/new/{client_id}")
 	public String saveOrder(@PathVariable("client_id") long client_id,
 							Model model,
-							@Validated @ModelAttribute("order")Order order,
 							@ModelAttribute("assembly") Assembly assembly,
 							BindingResult result){
-		order.getCpu_price().setId(assembly.getCpu().getId());
-		order.getGpu_price().setId(assembly.getGpu().getId());
+		Order order = new Order();
+		order.setCpu_price(priceService.getCpubyId(assembly.getCpu().getId()));
+		order.setGpu_price(priceService.getGpuById(assembly.getGpu().getId()));
+		order.setRam_price(priceService.getRamById(assembly.getRam().getId()));
+		order.setStorage_price(priceService.getStorageById(assembly.getStorage().getId()));
+		order.setMotherboard_price(priceService.getMotherboardbyId(assembly.getMotherboard().getId()));
+		order.setOrder_status(String.valueOf(OrderStatus.DELIVERED));
 		order.setOrder_date(LocalDateTime.now());
+		order.setDiscount(0);
+		order.setTotal_price(order.getTotalPrice());
 		order.setAssembly(assembly);
+		orderService.create(client_id,order);
 
 		return null;
 	}
