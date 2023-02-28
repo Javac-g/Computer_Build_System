@@ -1,6 +1,7 @@
 package com.anobel.controller;
 
 import com.anobel.model.Client;
+import com.anobel.model.price.Cpu_price_history;
 import com.anobel.service.ClientService;
 import com.anobel.service.RoleService;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/clients")
 public class ClientController {
     private final static Logger logger = LoggerFactory.getLogger(ClientController.class);
+
 
     @Autowired
     private ApplicationContext applicationContext;

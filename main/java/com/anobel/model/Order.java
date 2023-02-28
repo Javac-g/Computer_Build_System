@@ -1,5 +1,6 @@
 package com.anobel.model;
 
+import com.anobel.model.price.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "Order")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
@@ -29,30 +31,30 @@ public class Order {
     private List<Client> clients;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "last_price")
-    private Double cpu_price;
+    @JoinColumn(name = "cpu_price_id")
+    private Cpu_price_history cpu_price;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "last_price")
-    private Double gpu_price;
+    @JoinColumn(name = "gpu_price_id")
+    private Gpu_price_history gpu_price;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "last_price")
-    private Double storage_price;
+    @JoinColumn(name = "storage_price_id")
+    private Storage_price_history storage_price;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "last_price")
-    private Double motherboard_price;
+    @JoinColumn(name = "motherboard_price_id")
+    private Motherboard_price_history motherboard_price;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "last_price")
-    private Double ram_price;
+    @JoinColumn(name = "ram_price_id")
+    private Ram_price_history ram_price;
 
     @Column(name = "discount")
-    private Double discount;
+    private float discount;
 
     @Column(name = "total_price",nullable = false)
-    private Double total_price;
+    private float total_price;
 
     @DateTimeFormat(fallbackPatterns = "dd/MM/yyyy")
     private LocalDateTime order_date;
@@ -76,5 +78,13 @@ public class Order {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+    public Float getTotalPrice(){
+        this.total_price = cpu_price.getLast_price() +
+                            gpu_price.getLast_price()+
+                            ram_price.getLast_price()+
+                            motherboard_price.getLast_price()+
+                            storage_price.getLast_price();
+        return this.total_price;
     }
 }
