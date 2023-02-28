@@ -63,6 +63,8 @@ public class OrderController {
 							@Validated @ModelAttribute("order")Order order,
 							@ModelAttribute("assembly") Assembly assembly,
 							BindingResult result){
+		order.getCpu_price().setId(assembly.getCpu().getId());
+		order.getGpu_price().setId(assembly.getGpu().getId());
 		order.setOrder_date(LocalDateTime.now());
 		order.setAssembly(assembly);
 
