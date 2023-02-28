@@ -1,8 +1,7 @@
 package com.anobel.service.impl;
 
 import com.anobel.model.parts.*;
-import com.anobel.repository.parts_repository.CpuRepository;
-import com.anobel.repository.parts_repository.GpuRepository;
+import com.anobel.repository.parts_repository.*;
 import com.anobel.service.AssemblyService;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,16 @@ import java.util.List;
 public class AssemblyServiceImpl implements AssemblyService {
     private final CpuRepository cpuRepository;
     private final GpuRepository gpuRepository;
+    private final MotherboardRepository motherboardRepository;
+    private final StorageRepository storageRepository;
+    private final RamRepository ramRepository;
 
-    public AssemblyServiceImpl(CpuRepository cpuRepository, GpuRepository gpuRepository) {
+    public AssemblyServiceImpl(CpuRepository cpuRepository, GpuRepository gpuRepository, MotherboardRepository motherboardRepository, StorageRepository storageRepository, RamRepository ramRepository) {
         this.cpuRepository = cpuRepository;
         this.gpuRepository = gpuRepository;
+        this.motherboardRepository = motherboardRepository;
+        this.storageRepository = storageRepository;
+        this.ramRepository = ramRepository;
     }
 
     @Override
@@ -30,16 +35,16 @@ public class AssemblyServiceImpl implements AssemblyService {
 
     @Override
     public List<Ram> getAllRam() {
-        return null;
+        return ramRepository.findAll();
     }
 
     @Override
     public List<Motherboard> getAllMotherboard() {
-        return null;
+        return motherboardRepository.findAll();
     }
 
     @Override
     public List<Storage> getAllStorage() {
-        return null;
+        return storageRepository.findAll();
     }
 }

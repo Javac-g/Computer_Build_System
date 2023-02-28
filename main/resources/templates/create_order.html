@@ -12,13 +12,14 @@
 			<h1>Create new order</h1>
 		</header>
 		<h1>Choose motherboard</h1>
-		<form th:action = "" th:object = "${Mboard}">
-			<select th:field = "*{Mboard.getManufacturer()}">
+		<form th:action = "" th:object = "${order}">
+			<select th:field = "*{Motherboard.getManufacturer()}">
 				
 			<option value = "">select motherboard</option>
-			<option th:each = "Motherboard : ${Mboard}"
-					th:value ="${Mboard.getManufacturer()}"
+			<option th:each = "Motherboard : ${motherboardList}"
+					th:value ="${Motherboard.getManufacturer()}"
 					th:text = "${Motherboard}"></option>
+			</select>
 		</form>
 		<br>
 		<br>

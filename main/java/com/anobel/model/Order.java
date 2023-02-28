@@ -9,7 +9,7 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -20,7 +20,7 @@ import java.util.List;
 @Table(name = "Order")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
     private Long id;
 
@@ -28,29 +28,34 @@ public class Order {
     @ToString.Exclude
     private List<Client> clients;
 
-    @Column(name = "cpu_price",nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_price")
     private Double cpu_price;
 
-    @Column(name = "gpu_price",nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_price")
     private Double gpu_price;
 
-    @Column(name = "storage_price",nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_price")
     private Double storage_price;
 
-    @Column(name = "motherboard_price",nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_price")
     private Double motherboard_price;
 
-    @Column(name = "ram_price",nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "last_price")
     private Double ram_price;
 
-    @Column(name = "discount",nullable = false)
+    @Column(name = "discount")
     private Double discount;
 
     @Column(name = "total_price",nullable = false)
     private Double total_price;
 
     @DateTimeFormat(fallbackPatterns = "dd/MM/yyyy")
-    private Date order_date;
+    private LocalDateTime order_date;
 
     @Max(25)
     @Column(name = "order_status",nullable = false)
