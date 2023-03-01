@@ -2,14 +2,13 @@ package com.anobel.service.impl;
 
 import com.anobel.exception.NullEntityReferenceException;
 import com.anobel.model.Client;
-import com.anobel.model.Role;
 import com.anobel.repository.ClientRepository;
 import com.anobel.repository.RoleRepository;
 import com.anobel.service.ClientService;
 import com.anobel.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client create(Client client) {
         if (client != null) {
+
             client.setRole(roleService.find(1L));
             client.setPassword(passwordEncoder.encode(client.getPassword()));
             return clientRepository.save(client);
@@ -60,9 +60,7 @@ public class ClientServiceImpl implements ClientService {
             client1.setDiscount(client.getDiscount());
             client1.setEmail(client.getEmail());
             client1.setPassword(passwordEncoder.encode(client.getPassword()));
-            Role user = new Role();
-			user.setId(1L);
-            client1.setRole(user);
+            client1.setRole(client.getRole());
             
 
             return clientRepository.save(client1);

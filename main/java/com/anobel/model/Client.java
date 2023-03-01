@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@Data
+
 
 @Table(name = "clients")
 public class Client implements UserDetails {
@@ -58,17 +58,11 @@ public class Client implements UserDetails {
     private List<Order> orders;
 
     public Client() {
-
+        Role user = new Role();
+        user.setId(1L);
+        this.role = user;
     }
 
-    public Client(String email, String password, String fullName, String login, double discount, int orders_number) {
-        this.email = email;
-        this.password = password;
-        this.fullName = fullName;
-        this.login = login;
-        this.discount = discount;
-        this.orders_number = orders_number;
-    }
 
     @Override
     public boolean equals(Object o) {

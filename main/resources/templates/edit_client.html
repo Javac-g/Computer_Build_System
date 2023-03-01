@@ -26,8 +26,9 @@
 					<option th:if ="${role.getId() == client.getRole().getId()}" th:selected = "${true}" th:text = "${role.getName()}"
 					th:value = "${role.getId()}">
 					<option th:text ="${role.getName()}" th:unless= "${role.getId() == client.getRole().getId()}" th:value = "${role.getId()}"
-					th:value = "${role.getId()}">
+					>
 				</span>
+            </select>
             <label>Email<input type="email" name = "email" th:field="*{email}" placeholder = "Enter email"></label>
             <label>Password<input type="password" name = "password" th:field="*{password}" ></label>
             <button type = "submit" class="ipsButton ipsButton_primary">Confirm</button>

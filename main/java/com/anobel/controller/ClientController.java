@@ -1,14 +1,12 @@
 package com.anobel.controller;
 
 import com.anobel.model.Client;
-import com.anobel.model.price.Cpu_price_history;
 import com.anobel.service.ClientService;
 import com.anobel.service.RoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +19,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/clients")
 public class ClientController {
     private final static Logger logger = LoggerFactory.getLogger(ClientController.class);
-
-
-    @Autowired
-    private ApplicationContext applicationContext;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Qualifier("ClientServiceImpl")
@@ -59,12 +53,21 @@ public class ClientController {
     }
     @GetMapping("/edit/{id}")
     public String editClient(@PathVariable Long id,Model model){
-        model.addAttribute("client",clientService.readById(id));
+        Client client = clientService.readById(id);
+        model.addAttribute("client",client);
+        model.addAttribute("roles",roleService.getAll());
         return "edit_client";
     }
     @PostMapping("/edit/{id}")
-    public String updateClient(@PathVariable Long id ,@ModelAttribute("client") Client client, Model model){
-        
+    public String updateClient(@PathVariable Long id ,
+                               @Validated @ModelAttribute("client")Client client,
+                               @RequestParam("role_id")long role_id ,
+                               Model model, BindingResult result){
+        if(result.hasErrors()){
+
+            return "edit_client";
+        }
+        client.setRole(roleService.find(role_id));
         clientService.update(id,client);
         return "redirect:/clients/all";
     }
