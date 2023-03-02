@@ -78,10 +78,7 @@ public class ClientController {
 
 	}
 	
-	@GetMapping("/login")
-    public String loginClient(){
-        return "login";
-    }
+
 	
 	
 
