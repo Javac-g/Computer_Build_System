@@ -10,11 +10,15 @@
 <body>
     <h1>Welcome to assembly pc system</h1>
     <table>
-      <tr><button th:href=""> My orders</button></tr>
-      <tr><button> View all clients</button></tr>
+      <tr><button th:href="@{/orders/privateOrders/{client_id}(client_id = ${#authentication.principal.id})}"> My orders</button></tr>
+      <tr><button
+              th:if = "${#authorisation.expression('hasAuthority(''ADMIN'')')}"
+              th:href = "@{/clients/all}"> View all clients</button></tr>
       <tr><button> Create new client</button></tr>
       <tr><button> Create new order</button></tr>
       <tr><button> My orders</button></tr>
+      <tr><button> All orders</button></tr>
+
     </table>
 </body>
 </html>

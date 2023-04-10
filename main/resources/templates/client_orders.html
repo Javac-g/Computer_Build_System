@@ -41,11 +41,11 @@
         <!--/*@thymesVar id="order" type="Order"*/-->
         <tr th:each = "order : ${myOrders}">
             <td th:text = "${order.getId()}"></td>
-            <td th:text = "${order.getCpu_price()}"></td>
-            <td th:text = "${order.getGpu_price()}"></td>
-            <td th:text = "${order.getStorage_price()}"></td>
-            <td th:text = "${order.getMotherboard_price()}"></td>
-            <td th:text = "${order.getRam_price()}"></td>
+            <td th:text = "${order.getCpu_price().getLast_price()}"></td>
+            <td th:text = "${order.getGpu_price().getLast_price()}"></td>
+            <td th:text = "${order.getStorage_price().getLast_price()}"></td>
+            <td th:text = "${order.getMotherboard_price().getLast_price()}"></td>
+            <td th:text = "${order.getRam_price().getLast_price()}"></td>
             <td th:text = "${order.getDiscount()}"></td>
             <td th:text = "${order.getTotal_price()}"></td>
             <td th:text = "${order.getOrder_date()}"></td>

@@ -38,6 +38,12 @@ public class OrderController {
 		model.addAttribute("client",client);
         return "client_orders";
     }
+	@GetMapping("/addMotherboard/{client_id}")
+    public String addM(@PathVariable("client_id") Long id, Model model){
+		model.addAttribute("motherboardList",assemblyService.getAllMotherboard());
+		
+        return "addMotherboard";
+    }
 	
 	@GetMapping("/privateOrders/info/{order_id}")
 	public String myOrderInfo(@PathVariable("order_id") Long id,Model model){
@@ -49,12 +55,12 @@ public class OrderController {
 	@GetMapping("/new/{client_id}")
 	public String createOrder(@PathVariable("client_id") long client_id,Model model){
 		model.addAttribute("storageList",assemblyService.getAllStorage());
-		model.addAttribute("motherboardList",assemblyService.getAllMotherboard());
+		 
 		model.addAttribute("ramList",assemblyService.getAllRam());
 		model.addAttribute("gpuList",assemblyService.getAllGpu());
 		model.addAttribute("cpuList",assemblyService.getAllCpu());
 		model.addAttribute("assembly", new Assembly());
-		model.addAttribute("order",new Order());
+
 		model.addAttribute("client_id",client_id);
 		return "create_order";
 	}

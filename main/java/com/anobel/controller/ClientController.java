@@ -28,8 +28,6 @@ public class ClientController {
     @Autowired
     private RoleService roleService;
 
-
-    
     @GetMapping("/all")
     public String listClients(Model model){
         model.addAttribute("clients",clientService.getAllClients());
@@ -49,6 +47,7 @@ public class ClientController {
         }
 
         clientService.create(client);
+        long id = client.getId();
         return "redirect:/clients/all";
     }
     @GetMapping("/edit/{id}")

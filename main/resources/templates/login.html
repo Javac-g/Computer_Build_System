@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<title>Login into system</title>
-		<link rel="stylesheet" type="text/css" th:href="@{../static/css/Style.css}">
-		<link rel="stylesheet" type="text/css" th:href="@{../static/css/Default-Theme.css}" >
+		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 	</head>
 	<body>
 		<header>
@@ -16,7 +16,13 @@
 		<br>
 		<article class = "content">
 			<div class ="editor">
-				<form method = "POST" >
+				<form method = "POST" action="/perform_login">
+					<div role="alert" th:if="${param.error}">
+						<span>Invalid username or password.</span>
+					</div>
+					<div class="alert alert-success" role="alert" th:if="${param.logout}">
+						<span>You've been logged out successfully.</span>
+					</div>
 					<label>Login
 						<input id = "login" type="text" th:value="${login}">
 					</label>
@@ -28,7 +34,8 @@
 					</button>
 					<button class="ipsButton ipsButton_primary">
 						<a href="Login.html">Main</a>
-				</button>
+					</button><br/>
+					<h5>Don't have an account? <a href="/clients/new">Register now!</a></h5>
 				</form>
 			</div>
 		</article>

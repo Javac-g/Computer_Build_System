@@ -12,14 +12,32 @@
 			<h1>Create new order</h1>
 		</header>
 		<h1>Choose motherboard</h1>
-		<form th:action = "" th:object = "${order}">
-			<select th:field = "*{Motherboard.getManufacturer()}">
+		<form th:action = "@{/orders/new/{id}}" th:object = "${assembly}" method = "POST">
+			<table>
+				<tr>
+					<td>
+						<button th:href = "@{/orders/addMotherboard/{client_id}}">Add Motherboard</button>
+					</td>
+					<td>
+						<button th:href = "@{/orders/addMotherboard/{id}}">Add CPU</button>
+					</td>
+					<td>
+						<button th:href = "@{/orders/addMotherboard/{id}}">Add GPU</button>
+					</td>
+					<td>
+						<button th:href = "@{/orders/addMotherboard/{id}}">Add RAM</button>
+					</td>
+					<td>
+						<button th:href = "@{/orders/addMotherboard/{id}}">Add STORAGE</button>
+					</td>
 				
-			<option value = "">select motherboard</option>
-			<option th:each = "Motherboard : ${motherboardList}"
-					th:value ="${Motherboard.getManufacturer()}"
-					th:text = "${Motherboard}"></option>
-			</select>
+				</tr>
+				<tr>
+					<button type = "submit"> Make order </button>
+				</tr>
+			</table>
+
+
 		</form>
 		<br>
 		<br>
