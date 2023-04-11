@@ -44,6 +44,7 @@ public class OrderController {
 		
         return "addMotherboard";
     }
+
 	
 	@GetMapping("/privateOrders/info/{order_id}")
 	public String myOrderInfo(@PathVariable("order_id") Long id,Model model){
@@ -54,6 +55,7 @@ public class OrderController {
 	}
 	@GetMapping("/new/{client_id}")
 	public String createOrder(@PathVariable("client_id") long client_id,Model model){
+		Client x = clientService.readById(client_id);
 		model.addAttribute("storageList",assemblyService.getAllStorage());
 		 
 		model.addAttribute("ramList",assemblyService.getAllRam());
@@ -61,7 +63,7 @@ public class OrderController {
 		model.addAttribute("cpuList",assemblyService.getAllCpu());
 		model.addAttribute("assembly", new Assembly());
 
-		model.addAttribute("client_id",client_id);
+		model.addAttribute("client",x);
 		return "create_order";
 	}
 

@@ -12,11 +12,11 @@
 			<h1>Create new order</h1>
 		</header>
 		<h1>Choose motherboard</h1>
-		<form th:action = "@{/orders/new/{id}}" th:object = "${assembly}" method = "POST">
+		<form th:action = "@{/orders/new/{id}}" th:object = "${client}" method = "POST">
 			<table>
 				<tr>
 					<td>
-						<button th:href = "@{/orders/addMotherboard/{client_id}}">Add Motherboard</button>
+						<button th:href = "@{/orders/addMotherboard/{id}(id = ${client.getId()})}">Add Motherboard</button>
 					</td>
 					<td>
 						<button th:href = "@{/orders/addMotherboard/{id}}">Add CPU</button>

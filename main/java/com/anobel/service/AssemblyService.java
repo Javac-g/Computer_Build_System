@@ -11,4 +11,6 @@ public interface AssemblyService {
     List<Ram> getAllRam();
     List<Motherboard> getAllMotherboard();
     List<Storage> getAllStorage();
+
+    Motherboard findById(Long id);
 }

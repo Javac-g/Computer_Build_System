@@ -6,6 +6,7 @@ import com.anobel.service.AssemblyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssemblyServiceImpl implements AssemblyService {
@@ -46,5 +47,10 @@ public class AssemblyServiceImpl implements AssemblyService {
     @Override
     public List<Storage> getAllStorage() {
         return storageRepository.findAll();
+    }
+
+    public Motherboard findById(Long id){
+        Optional<Motherboard> x = motherboardRepository.findById(id);
+        return x.orElse(null);
     }
 }
