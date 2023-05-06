@@ -8,7 +8,7 @@ import java.util.List;
 public interface CompatibilityService {
 
     List<Cpu> compatibleCPU(Motherboard motherboard);
-    List<Motherboard> compatibleMotherboard(Cpu cpu);
+    List<Motherboard> compatibleMotherboard(Cpu cpu,Ram ram,Gpu gpu);
     List<Ram> compatibleRam(Motherboard motherboard);
     List<Gpu> compatibleGpu(Motherboard motherboard);
     List<Storage> compatibleStorage(Motherboard motherboard);

@@ -31,6 +31,9 @@ public class Motherboard {
     @Column(name = "gpu_type",nullable = false)
     private String gpu_type;
 
+    @Column(name = "storage_type",nullable = false)
+    private String storage_type;
+
     @Max(15)
     @Column(name = "socket/cpu",nullable = false)
     private String socket_cpu;
