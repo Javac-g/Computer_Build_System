@@ -20,7 +20,9 @@ public class Ram {
     @Max(25)
     @Column(name = "speed",nullable = false)
     private String speed;
-
+    @Max(25)
+    @Column(name = "ram_type",nullable = false)
+    private String ram_type;
     @Max(25)
     @Column(name = "modules",nullable = false)
     private String modules;

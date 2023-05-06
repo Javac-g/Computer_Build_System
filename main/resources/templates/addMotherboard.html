@@ -30,17 +30,19 @@
         </thead>
         <tbody>
         <!--/*@thymesVar id="order" type="Order"*/-->
-        <tr th:each = = "motherboard: ${motherboardList}">
-          
-           <td th:text = "${'Manufacturer: '+ motherboard.getManufacturer()}"></td>
-			<td th:text = "${'Memory slots: '+ motherboard.getMemory_slots()}"></td>
-			<td th:text = "${'Socket: '+ motherboard.getSocket_cpu()}"></td>
-			<td th:text = "${'Motherboard Manufacturer: '+ motherboard.getManufacturer()}"></td>
-			<td th:text = "${'RAM Manufacturer: '+ motherboard.getManufacturer()}"></td>
-			<td th:text = "${'Form factor: ' + motherboard.getForm_factor()}"></td>
-			<td th:text = "${'Max memory: '+ motherboard.getMemory_max() + ' Gb'}"></td>
-			<td><button th:href = "">Add</button><td>
-		</tr>
+		<form th:action = "@{/orders/addMotherboard/{id}}" th:object = "${motherboardList}" method = "POST">
+			<tr th:each = = "Motherboard: ${motherboardList}">
+			  
+			   <td th:text = "${'Manufacturer: '+ motherboard.getManufacturer()}"></td>
+				<td th:text = "${'Memory slots: '+ motherboard.getMemory_slots()}"></td>
+				<td th:text = "${'Socket: '+ motherboard.getSocket_cpu()}"></td>
+				<td th:text = "${'Motherboard Manufacturer: '+ motherboard.getManufacturer()}"></td>
+				<td th:text = "${'RAM Manufacturer: '+ motherboard.getManufacturer()}"></td>
+				<td th:text = "${'Form factor: ' + motherboard.getForm_factor()}"></td>
+				<td th:text = "${'Max memory: '+ motherboard.getMemory_max() + ' Gb'}"></td>
+				<td><button th:href = "">Add</button><td>
+			</tr>
+		</form>	
 			
 
             

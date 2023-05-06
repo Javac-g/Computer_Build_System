@@ -22,6 +22,8 @@ public class Cpu {
 
     @Column(name = "core_count",nullable = false)
     private Integer core_count;
+    @Column(name = "socket", nullable = false)
+    private String socket;
 
     @Max(25)
     @Column(name = "manufacturer",nullable = false,insertable=false, updatable=false)

@@ -66,6 +66,16 @@ public class ClientServiceImpl implements ClientService {
         return clientRepository.findAll();
 
     }
+	@Override
+	public Client readByLogin(String login){
+		List<Client> clients = getAllClients();
+		for(Client x: clients){
+			if(x.getLogin().equals(login)){
+				return x;
+			}
+		}
+		return null;
+	}
 
     @Override
     public Client create(Client client) {

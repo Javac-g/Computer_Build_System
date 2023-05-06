@@ -9,6 +9,7 @@ public interface ClientService {
      Client readById(long id);
      Client update(Long id,Client client);
      void delete(long id);
+	 Client readByLogin(String login);
 
     List<Client> getAllClients();
 }

@@ -1,8 +1,9 @@
 package com.anobel.controller;
-
+import java.util.*;
 import com.anobel.model.Assembly;
 import com.anobel.model.Client;
 import com.anobel.model.Order;
+import com.anobel.model.parts.Motherboard;
 import com.anobel.service.AssemblyService;
 import com.anobel.service.ClientService;
 import com.anobel.service.OrderService;
@@ -40,7 +41,8 @@ public class OrderController {
     }
 	@GetMapping("/addMotherboard/{client_id}")
     public String addM(@PathVariable("client_id") Long id, Model model){
-		model.addAttribute("motherboardList",assemblyService.getAllMotherboard());
+		List<Motherboard> motherboardList = assemblyService.getAllMotherboard();
+		model.addAttribute("motherboardList",motherboardList);
 		
         return "addMotherboard";
     }
@@ -53,9 +55,9 @@ public class OrderController {
 		model.addAttribute("assembly",assembly);
 		return  "assembly_info";
 	}
-	@GetMapping("/new/{client_id}")
-	public String createOrder(@PathVariable("client_id") long client_id,Model model){
-		Client x = clientService.readById(client_id);
+	@GetMapping("/new")
+	public String createOrder(@ModelAttribute("clientForOrder") Client clientForOrder,Model model){
+		
 		model.addAttribute("storageList",assemblyService.getAllStorage());
 		 
 		model.addAttribute("ramList",assemblyService.getAllRam());
@@ -63,11 +65,11 @@ public class OrderController {
 		model.addAttribute("cpuList",assemblyService.getAllCpu());
 		model.addAttribute("assembly", new Assembly());
 
-		model.addAttribute("client",x);
+		 
 		return "create_order";
 	}
 
-	@PostMapping("/new/{client_id}")
+	/*@PostMapping("/new/{client_id}")
 	public String saveOrder(@PathVariable("client_id") long client_id,
 							Model model,
 							@ModelAttribute("assembly") Assembly assembly,
@@ -86,5 +88,5 @@ public class OrderController {
 		orderService.create(client_id,order);
 
 		return null;
-	}
+	}*/
 }

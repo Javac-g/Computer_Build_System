@@ -38,17 +38,20 @@ public class ClientController {
         Client client = new Client();
 		
         model.addAttribute("client",client);
+		model.addAttribute("id",client.getId());
         return "create_client";
     }
     @PostMapping("/all")
-    public String saveClient(@Validated @ModelAttribute("client") Client client, BindingResult result){
+    public String saveClient(@Validated @ModelAttribute("client") Client client, BindingResult result,Model model){
         if (result.hasErrors()){
             return "create_client";
         }
 
         clientService.create(client);
-        long id = client.getId();
-        return "redirect:/clients/all";
+		Client saved = clientService.readByLogin(client.getLogin());
+		model.addAttribute("clientForOrder",saved);
+         
+        return "redirect:/orders/new";
     }
     @GetMapping("/edit/{id}")
     public String editClient(@PathVariable Long id,Model model){

@@ -18,7 +18,7 @@ public class Gpu {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    @Column(name = "memory",nullable = false)
+    @Column(name = "memory_size",nullable = false)
     private Integer memory;
 
     @Column(name = "length",nullable = false)
@@ -32,9 +32,15 @@ public class Gpu {
     @Column(name = "chipset",nullable = false)
     private String chipset;
 
-    @Column(name = "core_clock",nullable = false)
+    @Column(name = "core_clock_speed",nullable = false)
     private Integer core_clock;
 
-    @Column(name = "boost_clock",nullable = false)
+    @Column(name = "boost_clock_speed",nullable = false)
     private Integer boost_clock;
+
+    @Column(name = "pcie_type",nullable = false)
+    private String pcie_type;
+
+    @Column(name = "pcie_version",nullable = false)
+    private String pcie_version;
 }

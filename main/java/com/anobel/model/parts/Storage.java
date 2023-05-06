@@ -25,6 +25,9 @@ public class Storage {
     @Column(name = "type",nullable = false)
     private String type;
 
+    @Column(name = "interface",nullable = false)
+    private String s_interface;
+
     @Max(25)
     @Column(name = "manufacturer",nullable = false)
     private String manufacturer;

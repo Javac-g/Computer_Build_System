@@ -9,32 +9,39 @@
 	<body>
 	
 		<header>
-			<h1>Create new order</h1>
+			<h1>Create order</h1>
 		</header>
-		<h1>Choose motherboard</h1>
-		<form th:action = "@{/orders/new/{id}}" th:object = "${client}" method = "POST">
-			<table>
-				<tr>
-					<td>
-						<button th:href = "@{/orders/addMotherboard/{id}(id = ${client.getId()})}">Add Motherboard</button>
-					</td>
-					<td>
-						<button th:href = "@{/orders/addMotherboard/{id}}">Add CPU</button>
-					</td>
-					<td>
-						<button th:href = "@{/orders/addMotherboard/{id}}">Add GPU</button>
-					</td>
-					<td>
-						<button th:href = "@{/orders/addMotherboard/{id}}">Add RAM</button>
-					</td>
-					<td>
-						<button th:href = "@{/orders/addMotherboard/{id}}">Add STORAGE</button>
-					</td>
+		
+		
+			<table id = 'orderMenu'>
 				
-				</tr>
-				<tr>
-					<button type = "submit"> Make order </button>
-				</tr>
+					<tr><th>
+						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}(id = ${clientForOrder.getId()})}">Add Motherboard</a></button>
+						
+					</th><th><label>none</label></th></</tr>
+					<tr><th>
+						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add CPU</a></button>
+						
+					</th>
+					<th><label>none</label></th></tr>
+					<tr><th>
+						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add GPU</a></button>
+						
+					</th><th><label>none</label></th></</tr>
+					<tr><th>
+						<button  type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add RAM</a></button>
+						
+					</th><th><label>none</label></th></</tr>
+					<tr><th>
+						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add STORAGE</a></button>
+						
+					</th><th><label>none</label></th></</tr>
+				
+				
+				<tr><th><button id = 'makeOrder' type = "submit"> Make order </button></th>
+					 </tr>
+				
+				
 			</table>
 
 

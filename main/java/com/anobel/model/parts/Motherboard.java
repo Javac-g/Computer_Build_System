@@ -18,8 +18,18 @@ public class Motherboard {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    @Column(name = "memory_slots",nullable = false)
-    private Integer memory_slots;
+    @Column(name = "ram_slots",nullable = false)
+    private Integer ram_slots;
+
+    @Column(name = "ram_max",nullable = false)
+    private Integer memory_max;
+
+    @Column(name = "ram_type",nullable = false)
+    private String ram_type;
+    @Column(name = "ram_speed",nullable = false)
+    private Integer ram_speed;
+    @Column(name = "gpu_type",nullable = false)
+    private String gpu_type;
 
     @Max(15)
     @Column(name = "socket/cpu",nullable = false)
@@ -33,8 +43,7 @@ public class Motherboard {
     @Column(name = "form_factor",nullable = false)
     private String form_factor;
 
-    @Column(name = "memory_max",nullable = false)
-    private Integer memory_max;
+
 
 
 }
