@@ -43,13 +43,20 @@ public class OrderServiceImpl implements OrderService {
 	}
 
     @Override
-    public Order create(long client_id,Order order) {
+    public void create(Client client,Order order) {
         Active_Orders active_orders = new Active_Orders();
-        active_orders.setClient(clientService.readById(client_id));
+		Order lastOrder = orderRepository.findTopByOrderByIdDesc();
+		long newOrderId = lastOrder.getId()+1;
+	
+		order.setId(newOrderId);
+		orderRepository.save(order);
+		
+        active_orders.setClient(client);
         active_orders.setOrder(order);
+		
         activeOrdersRepository.save(active_orders);
 
-        return orderRepository.save(order);
+        
 
     }
 

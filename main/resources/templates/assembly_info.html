@@ -7,7 +7,39 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 	
-
+	<style>
+        .container {
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th,
+        .table td {
+            padding: 10px;
+            text-align: center;
+        }
+        .table .table-dark th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .table .tab th {
+            background-color: #f8f9fa;
+            color: #000;
+        }
+        .table .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .table .table-striped tbody tr:nth-of-type(even) {
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
 
@@ -44,7 +76,7 @@
 			<td th:text = "${'CPU core_count: '+ assembly.getCpu().getCore_count()}"></td>
 			<td th:text = "${'GPU Max memory: '+ assembly.getGpu().getMemory() + ' Gb'}"></td>
 			<td th:text = "${'Storage capacity: '+ assembly.getStorage().getCapacity() + ' Gb'}"></td>
-			<td th:text = "${'Motherboard memory slots: '+ assembly.getMotherboard().getMemory_slots()}"></td>
+			<td th:text = "${'Motherboard memory slots: '+ assembly.getMotherboard().getRam_slots()}"></td>
 			<td th:text = "${'RAM Speed: '+ assembly.getRam().getSpeed()}"></td>
 			</tr>
             <tr>

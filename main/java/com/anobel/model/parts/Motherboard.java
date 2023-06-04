@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.anobel.model.price.*;
 
 @Getter
 @Setter
@@ -22,30 +23,34 @@ public class Motherboard {
     private Integer ram_slots;
 
     @Column(name = "ram_max",nullable = false)
-    private Integer memory_max;
+    private String memory_max;
 
     @Column(name = "ram_type",nullable = false)
     private String ram_type;
     @Column(name = "ram_speed",nullable = false)
-    private Integer ram_speed;
+    private String ram_speed;
     @Column(name = "gpu_type",nullable = false)
     private String gpu_type;
 
     @Column(name = "storage_type",nullable = false)
     private String storage_type;
 
-    @Max(15)
-    @Column(name = "socket/cpu",nullable = false)
+   
+    @Column(name = "socket_cpu",nullable = false)
     private String socket_cpu;
-
-    @Max(25)
+	@Column(name = "connector_interface",nullable = false)
+    private String connector_interface;
+  
     @Column(name = "manufacturer",nullable = false)
     private String manufacturer;
 
-    @Max(25)
+   
     @Column(name = "form_factor",nullable = false)
     private String form_factor;
-
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "price_id")
+	private Motherboard_price_history motherboard_price_history;
 
 
 

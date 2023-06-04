@@ -1,0 +1,224 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Assembly info</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+    <style>
+        /* Add custom styles for the component selection page here */
+        .container {
+            margin-top: 20px;
+        }
+
+        .row {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 8px;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .table td {
+            border: 1px solid #dee2e6;
+        }
+
+        .image-container {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        .add-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+		:root {
+		  --brand: #262626;
+		}
+		select {
+		    padding: 8px;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    font-size: 16px;
+		    background-color: #f7f7f7;
+		}
+		select option {
+		    padding: 8px;
+		    font-size: 14px;
+		}
+		button {
+		    padding: 8px 16px;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    font-size: 16px;
+		    background-color: #f7f7f7;
+		    cursor: pointer;
+		}
+		form {
+		    display: flex;
+		    gap: 1rem;
+		    min-width: 50vw;
+		    justify-content: center;
+		    flex-wrap: wrap;
+		}
+		fieldset {
+			border: 2px solid var(--brand);
+			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			border-radius: 4px;
+			font-size: 1.25rem;
+		}
+		legend {
+			font-weight: 700;
+			color: var(--brand);
+			font-size: 1.5rem;
+			padding: 0 .25em;
+		}
+		fieldset input {
+			clip: rect(0 0 0 0);
+			clip-path: inset(50%);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+		}
+		fieldset label {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			cursor: pointer;
+			transition: all .2s linear;
+		}
+		fieldset label::before {
+			content: "";
+			width: 2rem;
+			aspect-ratio: 1;
+			border: 2px solid #fff;
+			display: inline-flex;
+			border-radius: 3px;
+			justify-content: center;
+			align-items: center;
+			transition: all .2s linear;
+		}
+		fieldset:has(input[type="radio"]) label::before {
+			border-radius: 50%;
+		}
+		input:checked ~ label {
+			color: var(--brand);
+		}
+		input[type="checkbox"]:checked ~ label::before {
+			content: "✓";
+			background-color: var(--brand);
+			border-color: var(--brand);
+			color: #fff;
+		}
+		input[type="radio"]:checked ~ label::before {
+			content: "✣";
+			background-color: var(--brand);
+			border-color: var(--brand);
+			box-shadow: inset 0 0 0 4px #fff;
+			color: #fff;
+		}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <h1 th:text="${'Choose your RAM:'}"></h1>
+    </div>
+    <fieldset>
+        <legend>Filters:</legend>
+        <div>
+            <label for="minPrice">Minimum Price:</label>
+            <select id="minPrice" name="minPrice">
+                <option value="">All</option>
+                <option th:each="price : ${prices}" th:value="${price}" th:text="${price}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
+        <div>
+            <label for="minType">RAM type:</label>
+            <select id="minType" name="minType">
+                <option value="">All</option>
+                <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
+        <div>
+            <label for="minSpeed">RAM speed:</label>
+            <select id="minSpeed" name="minSpeed">
+                <option value="">All</option>
+                <option th:each="speed : ${speeds}" th:value="${speed}" th:text="${speed}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
+    </fieldset>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark"></thead>
+        <tbody>
+            <!--/*@thymesVar id="order" type="Order"*/-->
+            <tr class="tab" th:each="ram: ${ramList}">
+                <form th:action="@{/orders/chooseR/{id}(id=${ram.getId()})}" method="post">
+                    <td>
+                        <p th:text="${'id: ' + ram.getId()}"></p>
+                        <p th:text="${'Manufacturer: ' + ram.getManufacturer()}"></p>
+                        <p th:text="${'RAM Speed: ' + ram.getSpeed()}" class="speed"></p>
+                        <p th:text="${'RAM Type: ' + ram.getRam_type()}" class="type"></p>
+                        <p th:text="${'RAM Modules: ' + ram.getModules()}"></p>
+                        <p th:text="${'Price $: ' + (ram.getRam_price_history()?.getLast_price() ?: '100')}" class="price"></p>
+                    </td>
+                    <td>
+                        <img th:src="@{/css/RAM.jpg}" alt="Ram Image" style="max-width: 200px; max-height: 200px;">
+                    </td>
+                    <td><button type="submit" name="action" value="add">Add</button></td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function applyFilter() {
+        var minPrice = document.getElementById('minPrice').value;
+        var minType = document.getElementById('minType').value;
+        var minSpeed = document.getElementById('minSpeed').value;
+        var rows = document.getElementsByClassName('tab');
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var priceElement = row.getElementsByClassName('price')[0];
+            var typeElement = row.getElementsByClassName('type')[0];
+            var speedElement = row.getElementsByClassName('speed')[0];
+            var price = parseInt(priceElement.textContent.replace('Price $: ', ''));
+            var type = typeElement.textContent.replace('RAM Type: ', '');
+            var speed = parseInt(speedElement.textContent.replace('RAM Speed: ', ''));
+
+            if ((minPrice === '' || price >= minPrice) && (minType === '' || type === minType) && (minSpeed === '' || speed >= minSpeed)) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

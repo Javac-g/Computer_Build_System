@@ -6,7 +6,39 @@
     <title>Clients Management</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
-
+ <style>
+        .container {
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th,
+        .table td {
+            padding: 10px;
+            text-align: center;
+        }
+        .table .table-dark th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .table .tab th {
+            background-color: #f8f9fa;
+            color: #000;
+        }
+        .table .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .table .table-striped tbody tr:nth-of-type(even) {
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
 
@@ -45,7 +77,7 @@
                     <td th:text = "${client.getOrders_number()}"></td>
                     <td th:text = "${client.getRole().getName()}"></td>
                     <td th:text = "${client.getPassword()}"></td>
-                    <td> <button type ="button"><a th:href= "@{/orders/privateOrders/{id}(id=${client.getId()})}">orders </a></button></td>
+                    <td> <button type ="button"><a th:href= "@{/orders/myOrders/{id}(id=${client.getId()})}">orders </a></button></td>
 					
                     <td> 
 					<button type = "button"><a th:href = "@{/clients/edit/{id}(id = ${client.getId()})}">Update</a></button>

@@ -33,15 +33,7 @@ public class ClientController {
         model.addAttribute("clients",clientService.getAllClients());
         return "all_clients";
     }
-    @GetMapping("/new")
-    public String createClient(Model model){
-        Client client = new Client();
-		
-        model.addAttribute("client",client);
-		model.addAttribute("id",client.getId());
-        return "create_client";
-    }
-    @PostMapping("/all")
+    @PostMapping("/new")
     public String saveClient(@Validated @ModelAttribute("client") Client client, BindingResult result,Model model){
         if (result.hasErrors()){
             return "create_client";
@@ -51,7 +43,15 @@ public class ClientController {
 		Client saved = clientService.readByLogin(client.getLogin());
 		model.addAttribute("clientForOrder",saved);
          
-        return "redirect:/orders/new";
+        return "redirect:/orders/new/" + client.getId();
+    }
+    @GetMapping("/new")
+    public String createClient(Model model){
+        Client client = new Client();
+
+        model.addAttribute("client",client);
+        model.addAttribute("id",client.getId());
+        return "create_client";
     }
     @GetMapping("/edit/{id}")
     public String editClient(@PathVariable Long id,Model model){

@@ -56,10 +56,11 @@ public class Order {
     @Column(name = "total_price",nullable = false)
     private float total_price;
 
-    @DateTimeFormat(fallbackPatterns = "dd/MM/yyyy")
+    @Column(name = "order_date", columnDefinition = "timestamp")
+	@DateTimeFormat(fallbackPatterns = "dd/MM/yyyy")
     private LocalDateTime order_date;
 
-    @Max(25)
+  
     @Column(name = "order_status",nullable = false)
     private String order_status;
 

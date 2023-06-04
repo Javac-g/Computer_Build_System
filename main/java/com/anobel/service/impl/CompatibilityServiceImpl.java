@@ -32,7 +32,7 @@ public class CompatibilityServiceImpl implements CompatibilityService {
 
     @Override
     public List<Ram> compatibleRam(Motherboard motherboard) {
-        return ramRepository.getCompatible(motherboard.getRam_type(), motherboard.getRam_speed());
+        return ramRepository.getCompatible(motherboard.getRam_type());
     }
 
     @Override

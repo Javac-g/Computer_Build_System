@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "gpu_price_history")
-public class Gpu_price_history {
+@Table(name = "computer_case_price_history")
+public class ComputerCase_price_history {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)

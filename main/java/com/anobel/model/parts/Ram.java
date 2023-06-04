@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.anobel.model.price.*;
+
 
 @Getter
 @Setter
@@ -30,4 +32,8 @@ public class Ram {
     @Max(25)
     @Column(name = "manufacturer",nullable = false)
     private String manufacturer;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "price_id")
+	private Ram_price_history ram_price_history;
 }

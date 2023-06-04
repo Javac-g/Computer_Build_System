@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.anobel.model.price.*;
 
 @Getter
 @Setter
@@ -43,4 +44,8 @@ public class Gpu {
 
     @Column(name = "pcie_version",nullable = false)
     private String pcie_version;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "price_id")
+	private Gpu_price_history gpu_price_history;
 }

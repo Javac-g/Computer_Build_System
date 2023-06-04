@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.anobel.model.price.*;
 
 @Getter
 @Setter
@@ -25,7 +26,7 @@ public class Cpu {
     @Column(name = "socket", nullable = false)
     private String socket;
 
-    @Max(25)
+    
     @Column(name = "manufacturer",nullable = false,insertable=false, updatable=false)
     private String manufacturer;
 
@@ -35,7 +36,11 @@ public class Cpu {
     @Column(name = "performance_boost_clock",nullable = false)
     private Integer performance_boost_clock;
 
-    @Max(25)
-    @Column(name = "manufacturer",nullable = false)
+
+    @Column(name = "integrated_graphics",nullable = false)
     private String integrated_graphics;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "price_id")
+	private Cpu_price_history cpu_price_history;
 }

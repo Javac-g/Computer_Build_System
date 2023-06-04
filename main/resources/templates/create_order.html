@@ -1,54 +1,166 @@
-<html lang="eng" xmlns:th  = "http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-	<head >
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Sign Up</title>
-		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
-	</head>
-	<body>
-	
-		<header>
-			<h1>Create order</h1>
-		</header>
-		
-		
-			<table id = 'orderMenu'>
-				
-					<tr><th>
-						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}(id = ${clientForOrder.getId()})}">Add Motherboard</a></button>
-						
-					</th><th><label>none</label></th></</tr>
-					<tr><th>
-						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add CPU</a></button>
-						
-					</th>
-					<th><label>none</label></th></tr>
-					<tr><th>
-						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add GPU</a></button>
-						
-					</th><th><label>none</label></th></</tr>
-					<tr><th>
-						<button  type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add RAM</a></button>
-						
-					</th><th><label>none</label></th></</tr>
-					<tr><th>
-						<button type = "button"><a th:href = "@{/orders/addMotherboard/{id}}">Add STORAGE</a></button>
-						
-					</th><th><label>none</label></th></</tr>
-				
-				
-				<tr><th><button id = 'makeOrder' type = "submit"> Make order </button></th>
-					 </tr>
-				
-				
-			</table>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Order</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+    <style>
+        /* Add custom styles here */
+
+        /* Center align the header */
+        header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Style the table */
+        #orderMenu {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        #orderMenu th {
+            background-color: #f2f2f2;
+            text-align: left;
+            padding: 10px;
+        }
+
+        #orderMenu td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Style the buttons */
+        #orderMenu button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #orderMenu button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #orderMenu button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style the labels */
+        #orderMenu label {
+            font-weight: bold;
+        }
+
+        /* Style the Make Order button */
+        #makeOrder {
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #makeOrder:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Create Order</h1>
+    </header>
+
+    <form  th:action="@{/orders/add-components/{id}(id=${client.getId()})}" method="post">
+        <table id="orderMenu">
+            <!-- Motherboard -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addMotherboard/{id}(id=${client.getId()})}">Add Motherboard</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedMotherboard?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedMotherboard != null ? 
+                        '- Cost: ' + session.selectedMotherboard.motherboard_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+
+            <!-- CPU -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addCpu/{id}(id=${client.getId()})}">Add CPU</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedCpu?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedCpu != null ? 
+                        '- Cost: ' + session.selectedCpu.cpu_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+
+            <!-- GPU -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addGpu/{id}(id=${client.getId()})}">Add GPU</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedGpu?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedGpu != null ? 
+                        '- Cost: ' + session.selectedGpu.gpu_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+
+            <!-- RAM -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addRam/{id}(id=${client.getId()})}">Add RAM</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedRam?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedRam != null ? 
+                        '- Cost: ' + session.selectedRam.ram_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+
+            <!-- Storage -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addStorage/{id}(id=${client.getId()})}">Add Storage</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedStorage?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedStorage != null ? 
+                        '- Cost: ' + session.selectedStorage.storage_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+
+            <!-- Buy button -->
+            <tr>
+                <th colspan="2">
+                    <button id="makeOrder" type="submit">Buy</button>
+                </th>
+                <td>
+                    <label th:text="'Total cost: ' + ${session.sum ?: 'in process'}"></label>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
 
 
-		</form>
-		<br>
-		<br>
-		<br>
-		
-	</body>
 </html>

@@ -14,7 +14,8 @@ import org.hibernate.Hibernate;
 public class Assembly {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "assembly_generator")
+	@SequenceGenerator(name = "assembly_generator", sequenceName = "assembly_seq", allocationSize = 1)
     @Column(name = "id",nullable = false)
     private Long id;
 
@@ -54,6 +55,7 @@ public class Assembly {
     public int hashCode() {
         return getClass().hashCode();
     }
+	
 
 
 }

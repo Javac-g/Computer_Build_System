@@ -11,6 +11,6 @@ import java.util.List;
 public interface GpuRepository extends JpaRepository<Gpu,Long> {
 
     @Query(value = "Select gpu FROM Gpu  gpu WHERE gpu.pcie_type = ?1")
-    List<Gpu> getCompatible(String gpu);
+    List<Gpu> getCompatible(String connector_interface);
 
 }

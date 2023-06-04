@@ -7,7 +7,49 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
 
-
+<style>
+        .container {
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th,
+        .table td {
+            padding: 10px;
+            text-align: center;
+        }
+        .table .table-dark th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .table .tab th {
+            background-color: #f8f9fa;
+            color: #000;
+        }
+        .table .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .table .table-striped tbody tr:nth-of-type(even) {
+            background-color: #fff;
+        }
+        .button {
+            margin: 10px 0;
+        }
+        .button a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +65,7 @@
         <thead class = "table-dark">
         <tr class = "tab">
 
-            <th>Id</th>
+           
             <th>CPU price</th>
             <th>GPU price</th>
             <th>Storage price</th>
@@ -40,7 +82,7 @@
         <tbody>
         <!--/*@thymesVar id="order" type="Order"*/-->
         <tr th:each = "order : ${myOrders}">
-            <td th:text = "${order.getId()}"></td>
+           
             <td th:text = "${order.getCpu_price().getLast_price()}"></td>
             <td th:text = "${order.getGpu_price().getLast_price()}"></td>
             <td th:text = "${order.getStorage_price().getLast_price()}"></td>
@@ -50,9 +92,12 @@
             <td th:text = "${order.getTotal_price()}"></td>
             <td th:text = "${order.getOrder_date()}"></td>
             <td th:text = "${order.getOrder_status()}"></td>
-            <td ><button type ="button"> <a th:href = "@{/orders/privateOrders/info/{order_id}(order_id = ${order.getId()})}">info</a> </button></td>
+            <td ><button type ="button"> <a th:href = "@{/orders/myOrders/info/{order_id}(order_id = ${order.getId()})}">info</a> </button></td>
 
         </tr>
+		
+		<button class = "button"><a th:href = "@{/orders/new/{client_id}(client_id = ${client.getId()})}" >New Order</a></button>
+		<button class = "button"><a th:href = "@{/clients/all}" >clients list</a></button>
         </tbody>
     </table>
 </div>

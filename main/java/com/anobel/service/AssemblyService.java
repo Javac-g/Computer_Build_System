@@ -1,6 +1,7 @@
 package com.anobel.service;
 
 import com.anobel.model.parts.*;
+import com.anobel.model.*;
 
 import java.util.List;
 
@@ -12,5 +13,7 @@ public interface AssemblyService {
     List<Motherboard> getAllMotherboard();
     List<Storage> getAllStorage();
 
+    List<ComputerCase> getAllComputerCase();
+	Assembly create(Assembly assembly);
     Motherboard findById(Long id);
 }

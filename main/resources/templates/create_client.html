@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Sign Up</title>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/css/Default-Theme.css}" />
+		
 	</head>
 	<body>
 	
@@ -16,7 +16,7 @@
 		<br>
 		<article class = "content">
 			<div class ="editor">
-				<form th:action = "@{/clients/all}" th:object = "${client}" method="POST">
+				<form th:action = "@{/clients/new}" th:object = "${client}" method="POST">
 					<label>Login
 						<input type="text" name = "login" th:field="*{login}" placeholder = "Enter login"></label>
 						<small th:if = "${#fields.hasErrors('login')}" th:errors = "*{login}"></small>

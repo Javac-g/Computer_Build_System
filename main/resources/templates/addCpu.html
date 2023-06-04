@@ -1,0 +1,93 @@
+
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add cpu</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cpustyle.css}" />
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <h1 th:text="${'Choose your CPU:'}"></h1>
+    </div>
+<fieldset>
+        <legend>Filters:</legend>
+    <div>
+        <label for="minPrice">Minimum Price:</label>
+        <select id="minPrice" name="minPrice">
+            <option value="">All</option>
+            <option th:each="price : ${prices}" th:value="${price}" th:text="${price}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="minCores">Minimum Cores:</label>
+        <select id="minCores" name="minCores">
+            <option value="">All</option>
+            <option th:each="core : ${cores}" th:value="${core}" th:text="${core}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+</fieldset>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        </thead>
+        <tbody>
+            <!--/*@thymesVar id="order" type="Order"*/-->
+            <tr class="tab" th:each="Cpu: ${cpuList}">
+                <td>
+                    <p th:text="${'id: ' + Cpu.getId()}"></p>
+                    <p th:text="${'CPU Manufacturer: ' + Cpu.getManufacturer()}" class="manufacturer"></p>
+                    <p th:text="${'CPU core_count: ' + Cpu.getCore_count()}" class="core"></p>
+                    <p th:text="${'CPU performance_core_clock: ' + Cpu.getPerformance_core_clock()}"></p>
+                    <p th:text="${'CPU performance_boost_clock: ' + Cpu.getPerformance_boost_clock()}"></p>
+                    <p th:text="${'CPU integrated_graphics: ' + Cpu.getIntegrated_graphics()}"></p>
+                    <p th:text="${'Price $: ' + Cpu.getCpu_price_history().getLast_price()}" class="price"></p>
+                </td>
+                <td>
+                    <img th:src="@{/css/Cpu.png}" alt="CPU Image" style="max-width: 200px; max-height: 200px;">
+                </td>
+                <td>
+                    <form th:action="@{/orders/chooseC/{id}(id=${Cpu.getId()})}" method="post">
+                        <button type="submit" name="action" value="add">Add</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function applyFilter() {
+        var minPriceSelect = document.getElementById('minPrice');
+        var minPrice = minPriceSelect.options[minPriceSelect.selectedIndex].value;
+
+        var minCoresSelect = document.getElementById('minCores');
+        var minCores = minCoresSelect.options[minCoresSelect.selectedIndex].value;
+
+        var
+
+ rows = document.getElementsByClassName('tab');
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var priceElement = row.getElementsByClassName('price')[0];
+            var price = parseInt(priceElement.textContent.replace('Price $: ', ''));
+
+            var coreElement = row.getElementsByClassName('core')[0];
+            var cores = parseInt(coreElement.textContent.replace('CPU core_count: ', ''));
+
+            if ((minPrice === '' || price >= minPrice) && (minCores === '' || cores >= minCores)) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
