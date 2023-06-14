@@ -10,7 +10,7 @@ import com.anobel.model.price.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "Motherboard_list")
+@Table(name = "motherboard_list")
 @NoArgsConstructor
 public class Motherboard {
 
@@ -18,35 +18,47 @@ public class Motherboard {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id",nullable = false)
     private Long id;
+	 @Column(name = "socket_type")
+    private String socketType;
 
-    @Column(name = "ram_slots",nullable = false)
-    private Integer ram_slots;
+    @Column(name = "price_id")
+    private Integer priceId;
 
-    @Column(name = "ram_max",nullable = false)
-    private String memory_max;
+    @Column(name = "model")
+    private String model;
 
-    @Column(name = "ram_type",nullable = false)
-    private String ram_type;
-    @Column(name = "ram_speed",nullable = false)
-    private String ram_speed;
-    @Column(name = "gpu_type",nullable = false)
-    private String gpu_type;
+    @Column(name = "chipset")
+    private String chipset;
 
-    @Column(name = "storage_type",nullable = false)
-    private String storage_type;
+    @Column(name = "ram_type")
+    private String ramType;
 
-   
-    @Column(name = "socket_cpu",nullable = false)
-    private String socket_cpu;
-	@Column(name = "connector_interface",nullable = false)
-    private String connector_interface;
-  
-    @Column(name = "manufacturer",nullable = false)
-    private String manufacturer;
+    @Column(name = "ram_speed")
+    private Integer ramSpeed;
 
-   
-    @Column(name = "form_factor",nullable = false)
-    private String form_factor;
+    @Column(name = "tdp")
+    private Integer tdp;
+
+    @Column(name = "bios_version")
+    private Double biosVersion;
+
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "ram_capacity")
+    private Integer ramCapacity;
+
+    @Column(name = "pcie_type")
+    private String pcieType;
+
+    @Column(name = "storage_ports")
+    private String storagePorts;
+
+    @Column(name = "wattage")
+    private Integer wattage;
+
+    @Column(name = "form_factor")
+    private String formFactor;
 	
 	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "price_id")

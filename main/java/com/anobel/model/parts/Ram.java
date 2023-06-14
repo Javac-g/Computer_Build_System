@@ -19,19 +19,32 @@ public class Ram {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    @Max(25)
-    @Column(name = "speed",nullable = false)
+     @Column(name = "speed")
     private Integer speed;
-    @Max(25)
-    @Column(name = "ram_type",nullable = false)
-    private String ram_type;
-    @Max(25)
-    @Column(name = "modules",nullable = false)
+
+    @Column(name = "modules")
     private String modules;
 
-    @Max(25)
-    @Column(name = "manufacturer",nullable = false)
+    @Column(name = "manufacturer")
     private String manufacturer;
+
+    @Column(name = "price_id")
+    private Integer priceId;
+
+    @Column(name = "capacity")
+    private Integer capacity;
+
+    @Column(name = "ram_type")
+    private String ramType;
+
+    @Column(name = "wattage")
+    private Integer wattage;
+
+    @Column(name = "cas_latency")
+    private Integer casLatency;
+
+    @Column(name = "voltage")
+    private Double voltage;
 	
 	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "price_id")

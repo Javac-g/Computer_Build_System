@@ -14,6 +14,9 @@ public interface AssemblyService {
     List<Storage> getAllStorage();
 
     List<ComputerCase> getAllComputerCase();
+	List<PowerSupply> getAllPowerSupply();
+	List<CpuCooler> getAllCpuCooler();
+	
 	Assembly create(Assembly assembly);
     Motherboard findById(Long id);
 }

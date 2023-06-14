@@ -38,15 +38,22 @@
         <tbody>
             <!--/*@thymesVar id="order" type="Order"*/-->
             <tr class="tab" th:each="Cpu: ${cpuList}">
-                <td>
-                    <p th:text="${'id: ' + Cpu.getId()}"></p>
-                    <p th:text="${'CPU Manufacturer: ' + Cpu.getManufacturer()}" class="manufacturer"></p>
-                    <p th:text="${'CPU core_count: ' + Cpu.getCore_count()}" class="core"></p>
-                    <p th:text="${'CPU performance_core_clock: ' + Cpu.getPerformance_core_clock()}"></p>
-                    <p th:text="${'CPU performance_boost_clock: ' + Cpu.getPerformance_boost_clock()}"></p>
-                    <p th:text="${'CPU integrated_graphics: ' + Cpu.getIntegrated_graphics()}"></p>
-                    <p th:text="${'Price $: ' + Cpu.getCpu_price_history().getLast_price()}" class="price"></p>
-                </td>
+                 <td>
+					<p th:text="${'id: ' + cpu.id}"></p>
+					<p th:text="${'CPU Manufacturer: ' + cpu.manufacturer}" class="manufacturer"></p>
+					<p th:text="${'CPU core_count: ' + cpu.coreCount}" class="core"></p>
+					<p th:text="${'CPU performance_core_clock: ' + cpu.performanceCoreClock}"></p>
+					<p th:text="${'CPU performance_boost_clock: ' + cpu.performanceBoostClock}"></p>
+					<p th:text="${'CPU integrated_graphics: ' + cpu.integratedGraphics}"></p>
+					<p th:text="${'Price $: ' + cpu.cpuPriceHistory.lastPrice}" class="price"></p>
+					<p th:text="${'Socket Type: ' + cpu.socketType}"></p>
+					<p th:text="${'TDP: ' + cpu.tdp}"></p>
+					
+					<p th:text="${'Brand: ' + cpu.brand}"></p>
+					<p th:text="${'RAM Type: ' + cpu.ramType}"></p>
+					<p th:text="${'RAM Speed: ' + cpu.ramSpeed}"></p>
+					<!-- Add more fields as needed -->
+				</td>
                 <td>
                     <img th:src="@{/css/Cpu.png}" alt="CPU Image" style="max-width: 200px; max-height: 200px;">
                 </td>

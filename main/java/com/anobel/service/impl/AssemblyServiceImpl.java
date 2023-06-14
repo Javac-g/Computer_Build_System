@@ -17,10 +17,14 @@ public class AssemblyServiceImpl implements AssemblyService {
     private final MotherboardRepository motherboardRepository;
     private final StorageRepository storageRepository;
     private final RamRepository ramRepository;
-    private final ComputerCaseRepository computerCaseRepository;
+    
 	private final AssemblyRepository assemblyRepository;
+	
+	private final ComputerCaseRepository computerCaseRepository;
+	private final PowerSupplyRepository powerSupplyRepository;
+	private final CpuCoolerRepository cpuCoolerRepository;
 
-    public AssemblyServiceImpl(AssemblyRepository assemblyRepository,ComputerCaseRepository computerCaseRepository,CpuRepository cpuRepository, GpuRepository gpuRepository, MotherboardRepository motherboardRepository, StorageRepository storageRepository, RamRepository ramRepository) {
+    public AssemblyServiceImpl(AssemblyRepository assemblyRepository,ComputerCaseRepository computerCaseRepository,CpuRepository cpuRepository, GpuRepository gpuRepository, MotherboardRepository motherboardRepository, StorageRepository storageRepository, RamRepository ramRepository,PowerSupplyRepository powerSupplyRepository,CpuCoolerRepository cpuCoolerRepository) {
         this.cpuRepository = cpuRepository;
         this.gpuRepository = gpuRepository;
         this.motherboardRepository = motherboardRepository;
@@ -28,6 +32,8 @@ public class AssemblyServiceImpl implements AssemblyService {
         this.ramRepository = ramRepository;
         this.computerCaseRepository = computerCaseRepository;
 		this.assemblyRepository = assemblyRepository;
+		this.powerSupplyRepository = powerSupplyRepository;
+		this.cpuCoolerRepository = cpuCoolerRepository;
     }
 
     @Override
@@ -67,5 +73,13 @@ public class AssemblyServiceImpl implements AssemblyService {
     @Override
     public List<ComputerCase> getAllComputerCase() {
         return computerCaseRepository.findAll();
+    }
+	@Override
+    public List<CpuCooler> getAllCpuCooler() {
+        return cpuCoolerRepository.findAll();
+    }
+	@Override
+    public List<PowerSupply> getAllPowerSupply() {
+        return powerSupplyRepository.findAll();
     }
 }

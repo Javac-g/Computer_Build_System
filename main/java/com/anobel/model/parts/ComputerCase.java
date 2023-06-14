@@ -34,6 +34,10 @@ public class ComputerCase {
 
     @Column(name = "max_psu_length",nullable = false)
     private Integer max_psu_length;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "price_id")
+	private ComputerCase_price_history computerCase_price_history;
 
 
 }

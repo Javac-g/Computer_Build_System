@@ -10,7 +10,7 @@ import com.anobel.model.price.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "Storage_list")
+@Table(name = "storage_list")
 @NoArgsConstructor
 public class Storage {
 
@@ -19,19 +19,32 @@ public class Storage {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    @Column(name = "capacity",nullable = false)
+    @Column(name = "capacity")
     private Integer capacity;
 
-    @Max(5)
-    @Column(name = "type",nullable = false)
+    @Column(name = "type")
     private String type;
 
-    @Column(name = "interface",nullable = false)
-    private String s_interface;
-
-    @Max(25)
-    @Column(name = "manufacturer",nullable = false)
+    @Column(name = "manufacturer")
     private String manufacturer;
+
+    @Column(name = "price_id")
+    private Integer priceId;
+
+    @Column(name = "interface")
+    private String interfaceType;
+
+    @Column(name = "cache_size")
+    private Integer cacheSize;
+
+    @Column(name = "wattage")
+    private Integer wattage;
+
+    @Column(name = "readspeed")
+    private Double readSpeed;
+
+    @Column(name = "writespeed")
+    private Double writeSpeed;
 	
 	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "price_id")

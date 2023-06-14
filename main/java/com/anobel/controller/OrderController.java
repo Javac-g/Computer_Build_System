@@ -6,11 +6,8 @@ import com.anobel.model.Client;
 import com.anobel.model.Order;
 import com.anobel.model.parts.*;
 import com.anobel.model.*;
-import com.anobel.service.AssemblyService;
-import com.anobel.service.ClientService;
-import com.anobel.service.OrderService;
-import com.anobel.service.PriceService;
-import com.anobel.service.impl.OrderServiceImpl;
+import com.anobel.service.*;
+import com.anobel.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +44,12 @@ public class OrderController {
 	private RamRepository ramRepository;
 	@Autowired
 	private MotherboardRepository motherboardRepository;
-	
+	@Autowired
+	private ComputerCaseRepository computerCaseRepository;
+	@Autowired
+	private PowerSupplyRepository powerSupplyRepository;
+	@Autowired
+	private CpuCoolerRepository cpuCoolerRepository;
 	
 	private Client x = new Client();
 
@@ -141,6 +143,38 @@ public class OrderController {
 		
         return "addStorage";
     }
+	@GetMapping("/addPower/{client_id}")
+    public String getPs(@PathVariable("client_id") Long client_id,HttpSession session ,Model model){
+		Client client = clientService.readById(client_id);
+		x.setId(client.getId());
+		Motherboard selectedMotherboard = (Motherboard) session.getAttribute("selectedMotherboard");
+		Storage selectedStorage = (Storage)session.getAttribute("selectedStorage");
+		Cpu selectedCPU = (Cpu) session.getAttribute("selectedCpu");
+        Gpu selectedGPU = (Gpu) session.getAttribute("selectedGpu");
+        Ram selectedRAM = (Ram) session.getAttribute("selectedRam");
+       
+		List<PowerSupply> powerList = powerSupplyRepository.getCompatible(
+		selectedMotherboard.getId(),
+		selectedCPU.getId(),
+		selectedRAM.getId(),
+		selectedGPU.getId(),
+		selectedStorage.getId());
+		
+		model.addAttribute("powerList",powerList);
+		Set<Float> prices = powerList.stream()
+                            .map(powerSupply -> powerSupply.getPowerSupply_price_history().getLast_price())
+                            .collect(Collectors.toSet());
+							
+		Set<String> brand = powerList.stream().map(PowerSupply::getBrand).collect(Collectors.toSet());
+		Set<String> model = powerList.stream().map(PowerSupply::getModel).collect(Collectors.toSet());
+		
+		model.addAttribute("prices",prices);
+		model.addAttribute("brands",brand);
+		model.addAttribute("models",model);
+		
+        return "addPower";
+    }
+	
 	@GetMapping("/addRam/{client_id}")
     public String getR(@PathVariable("client_id") Long client_id,HttpSession session , Model model){
 		Client client = clientService.readById(client_id);
@@ -289,6 +323,38 @@ public class OrderController {
 
     return "redirect:/";
 }
+@PostMapping("/choosePower/{id}")
+	public String processPowerSelection(@PathVariable("id") Long powerid,
+                                          @RequestParam("action") String action,
+                                          HttpSession session,@ModelAttribute("client")Client client) {
+		PowerSupply selectedPower = powerSupplyRepository.findById(powerid).orElseThrow(() -> new IllegalArgumentException("Invalid Power supply ID"));
+		Storage selectedStorage = (Storage)session.getAttribute("selectedStorage");
+		Cpu selectedCPU = (Cpu) session.getAttribute("selectedCpu");
+        Gpu selectedGPU = (Gpu) session.getAttribute("selectedGpu");
+        Ram selectedRAM = (Ram) session.getAttribute("selectedRam");
+        Motherboard selectedMotherboard = (Motherboard) session.getAttribute("selectedMotherboard");
+		
+		float cpui = selectedCPU.getCpu_price_history().getLast_price();
+		float gpui = selectedGPU.getGpu_price_history().getLast_price();
+		float rami = selectedRAM.getRam_price_history().getLast_price();
+		float storagei = selectedStorage.getStorage_price_history().getLast_price();
+		float mbi = selectedMotherboard.getMotherboard_price_history().getLast_price();
+		float psi = selectedPower.getPowerSupply_price_history().getLast_price();
+		Float sum = cpui+gpui+rami+storagei+mbi+psi;
+
+		if ("add".equals(action)) {
+			// Add the selected motherboard to the assembly or session
+			session.setAttribute("selectedPower", selectedPower);
+			session.setAttribute("sum", sum);
+
+			return "redirect:/orders/new/" + x.getId() ;
+		} else if ("cancel".equals(action)) {
+			// Handle cancellation or other actions
+			// ...
+		}
+
+    return "redirect:/";
+}
 	
 
 	
@@ -326,6 +392,8 @@ public String addComponentsToAssembly(@PathVariable("id") Long clientId,HttpSess
     Gpu selectedGPU = (Gpu) session.getAttribute("selectedGpu");
     Ram selectedRAM = (Ram) session.getAttribute("selectedRam");
     Storage selectedStorage = (Storage) session.getAttribute("selectedStorage");
+	PowerSupply  selectedPower = (PowerSupply) session.getAttribute("selectedStorage");
+	
     Float sum = (Float) session.getAttribute("sum");
     Client client = clientService.readById(clientId);
     model.addAttribute("myOrders",orderService.findCurrentClientOrders(client.getId()));
@@ -338,6 +406,7 @@ public String addComponentsToAssembly(@PathVariable("id") Long clientId,HttpSess
     assembly.setGpu(selectedGPU);
     assembly.setRam(selectedRAM);
     assembly.setStorage(selectedStorage);
+	assembly.setPowerSupply(selectedStorage);
 	Purpose purpose = new Purpose();
 	purpose.setId(1L);
 	assembly.setPurpose(purpose);

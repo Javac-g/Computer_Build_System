@@ -1,6 +1,9 @@
 package com.anobel.model;
 
 import com.anobel.model.parts.*;
+import com.anobel.model.parts.PowerSupply;
+import com.anobel.model.parts.ComputerCase;
+import com.anobel.model.parts.CpuCooler;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +45,18 @@ public class Assembly {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gpu_id")
     private Gpu gpu;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "power_supply_id")
+	private PowerSupply powerSupply;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "computer_case_id")
+	private ComputerCase computerCase;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cpu_cooler_id")
+	private CpuCooler cpuCooler;
 
     @Override
     public boolean equals(Object o) {

@@ -10,7 +10,7 @@ import com.anobel.model.price.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "GPU_list")
+@Table(name = "gpu_list")
 @NoArgsConstructor
 public class Gpu {
 
@@ -19,31 +19,39 @@ public class Gpu {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    @Column(name = "memory_size",nullable = false)
-    private Integer memory;
+    @Column(name = "memory_size")
+    private Integer memorySize;
 
-    @Column(name = "length",nullable = false)
+    @Column(name = "length")
     private Integer length;
 
-    @Max(25)
-    @Column(name = "manufacturer",nullable = false)
+    @Column(name = "manufacturer")
     private String manufacturer;
 
-    @Max(15)
-    @Column(name = "chipset",nullable = false)
+    @Column(name = "chipset")
     private String chipset;
 
-    @Column(name = "core_clock_speed",nullable = false)
-    private Integer core_clock;
+    @Column(name = "price_id")
+    private Integer priceId;
 
-    @Column(name = "boost_clock_speed",nullable = false)
-    private Integer boost_clock;
+    @Column(name = "tdp")
+    private Integer tdp;
 
-    @Column(name = "pcie_type",nullable = false)
-    private String pcie_type;
+    @Column(name = "pcie_type")
+    private String pcieType;
 
-    @Column(name = "pcie_version",nullable = false)
-    private String pcie_version;
+    @Column(name = "wattage")
+    private Integer wattage;
+
+    @Column(name = "model")
+    private String model;
+
+    @Column(name = "gpu_pcie_slot")
+    private String gpuPcieSlot;
+
+    @Column(name = "gpu_form_factor")
+    private String gpuFormFactor;
+
 	
 	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "price_id")

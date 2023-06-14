@@ -97,7 +97,7 @@
             <tr>
                 <th>
                     <button type="button">
-                        <a th:href="@{/orders/addCpu/{id}(id=${client.getId()})}">Add CPU</a>
+                        <a th:href="@{/orders/addCpu/{id}(id=${client.getId()})}">Add Processor</a>
                     </button>
                 </th>
                 <td>
@@ -111,7 +111,7 @@
             <tr>
                 <th>
                     <button type="button">
-                        <a th:href="@{/orders/addGpu/{id}(id=${client.getId()})}">Add GPU</a>
+                        <a th:href="@{/orders/addGpu/{id}(id=${client.getId()})}">Add Graphic Card</a>
                     </button>
                 </th>
                 <td>
@@ -125,7 +125,7 @@
             <tr>
                 <th>
                     <button type="button">
-                        <a th:href="@{/orders/addRam/{id}(id=${client.getId()})}">Add RAM</a>
+                        <a th:href="@{/orders/addRam/{id}(id=${client.getId()})}">Add Computer Memory</a>
                     </button>
                 </th>
                 <td>
@@ -140,6 +140,19 @@
                 <th>
                     <button type="button">
                         <a th:href="@{/orders/addStorage/{id}(id=${client.getId()})}">Add Storage</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedStorage?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedStorage != null ? 
+                        '- Cost: ' + session.selectedStorage.storage_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+			<!-- Power supply -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addPower/{id}(id=${client.getId()})}">Add Power Supply</a>
                     </button>
                 </th>
                 <td>
