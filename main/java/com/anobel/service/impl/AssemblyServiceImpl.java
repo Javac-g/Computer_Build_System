@@ -64,7 +64,7 @@ public class AssemblyServiceImpl implements AssemblyService {
     public List<Storage> getAllStorage() {
         return storageRepository.findAll();
     }
-	
+	@Override
     public Motherboard findById(Long id){
         Optional<Motherboard> x = motherboardRepository.findById(id);
         return x.orElse(null);

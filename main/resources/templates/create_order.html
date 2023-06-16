@@ -87,7 +87,7 @@
                     </button>
                 </th>
                 <td>
-                    <label th:text="'Brand: ' + ${session.selectedMotherboard?.manufacturer ?: 'Not chosen'}"></label>
+                    <label th:text="'Brand: ' + ${session.selectedMotherboard?.brand ?: 'Not chosen'}"></label>
                     <label th:text="${session.selectedMotherboard != null ? 
                         '- Cost: ' + session.selectedMotherboard.motherboard_price_history.getLast_price() + ' $' : '0 $'}"></label>
                 </td>
@@ -156,9 +156,35 @@
                     </button>
                 </th>
                 <td>
-                    <label th:text="'Brand: ' + ${session.selectedStorage?.manufacturer ?: 'Not chosen'}"></label>
-                    <label th:text="${session.selectedStorage != null ? 
-                        '- Cost: ' + session.selectedStorage.storage_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                    <label th:text="'Brand: ' + ${session.selectedPower?.brand ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedPower != null ? 
+                        '- Cost: ' + session.selectedPower.powerSupply_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+            <!-- Cpu cooler  -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addCooler/{id}(id=${client.getId()})}">Add CPU Cooler</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedCpuCooler?.brand ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedCpuCooler != null ? 
+                        '- Cost: ' + session.selectedCpuCooler.cpuCooler_price_history.getLast_price() + ' $' : '0 $'}"></label>
+                </td>
+            </tr>
+            <!-- Computer case -->
+            <tr>
+                <th>
+                    <button type="button">
+                        <a th:href="@{/orders/addCase/{id}(id=${client.getId()})}">Add Computer Case</a>
+                    </button>
+                </th>
+                <td>
+                    <label th:text="'Brand: ' + ${session.selectedComputerCase?.brand ?: 'Not chosen'}"></label>
+                    <label th:text="${session.selectedComputerCase != null ? 
+                        '- Cost: ' + session.selectedComputerCase.computerCase_price_history.getLast_price() + ' $' : '0 $'}"></label>
                 </td>
             </tr>
 

@@ -15,6 +15,8 @@
     </div>
 <fieldset>
         <legend>Filters:</legend>
+    <fieldset>
+    <legend>Filters:</legend>
     <div>
         <label for="minPrice">Minimum Price:</label>
         <select id="minPrice" name="minPrice">
@@ -31,34 +33,189 @@
         </select>
         <button onclick="applyFilter()">Apply</button>
     </div>
+    <div>
+        <label for="tdp">TDP:</label>
+        <select id="tdp" name="tdp">
+            <option value="">All</option>
+            <option th:each="tdp : ${tdpSet}" th:value="${tdp}" th:text="${tdp}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="coreCount">Core Count:</label>
+        <select id="coreCount" name="coreCount">
+            <option value="">All</option>
+            <option th:each="coreCount : ${coreCountSet}" th:value="${coreCount}" th:text="${coreCount}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="manufacturer">Manufacturer:</label>
+        <select id="manufacturer" name="manufacturer">
+            <option value="">All</option>
+            <option th:each="manufacturer : ${manufacturerSet}" th:value="${manufacturer}" th:text="${manufacturer}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="performanceCoreClock">Performance Core Clock:</label>
+        <select id="performanceCoreClock" name="performanceCoreClock">
+            <option value="">All</option>
+            <option th:each="performanceCoreClock : ${performanceCoreClockSet}" th:value="${performanceCoreClock}" th:text="${performanceCoreClock}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="performanceBoostClock">Performance Boost Clock:</label>
+        <select id="performanceBoostClock" name="performanceBoostClock">
+            <option value="">All</option>
+            <option th:each="performanceBoostClock : ${performanceBoostClockSet}" th:value="${performanceBoostClock}" th:text="${performanceBoostClock}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="integratedGraphics">Integrated Graphics:</label>
+        <select id="integratedGraphics" name="integratedGraphics">
+            <option value="">All</option>
+            <option th:each="integratedGraphics : ${integratedGraphicsSet}" th:value="${integratedGraphics}" th:text="${integratedGraphics}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="socketType">Socket Type:</label>
+        <select id="socketType" name="socketType">
+            <option value="">All</option>
+            <option th:each="socketType : ${socketTypeSet}" th:value="${socketType}" th:text="${socketType}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="threads">Threads:</label>
+        <select id="threads" name="threads">
+            <option value="">All</option>
+            <option th:each="threads : ${threadsSet}" th:value="${threads}" th:text="${threads}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="wattage">Wattage:</label>
+        <select id="wattage" name="wattage">
+            <option value="">All</option>
+            <option th:each="wattage : ${wattageSet}" th:value="${wattage}" th:text="${wattage}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="cpuSpeed">CPU Speed:</label>
+        <select id="cpuSpeed" name="cpuSpeed">
+            <option value="">All</option>
+            <option th:each="cpuSpeed : ${cpuSpeedSet}" th:value="${cpuSpeed}" th:text="${cpuSpeed}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="brand">Brand:</label>
+        <select id="brand" name="brand">
+            <option value="">All</option>
+            <option th:each="brand : ${brandSet}" th:value="${brand}" th:text="${brand}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="cpuModel">CPU Model:</label>
+        <select id="cpuModel" name="cpuModel">
+            <option value="">All</option>
+            <option th:each="cpuModel : ${cpuModelSet}" th:value="${cpuModel}" th:text="${cpuModel}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="cpuProcessorType">CPU Processor Type:</label>
+        <select id="cpuProcessorType" name="cpuProcessorType">
+            <option value="">All</option>
+            <option th:each="cpuProcessorType : ${cpuProcessorTypeSet}" th:value="${cpuProcessorType}" th:text="${cpuProcessorType}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="chipset">Chipset:</label>
+        <select id="chipset" name="chipset">
+            <option value="">All</option>
+            <option th:each="chipset : ${chipsetSet}" th:value="${chipset}" th:text="${chipset}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="ramType">RAM Type:</label>
+        <select id="ramType" name="ramType">
+            <option value="">All</option>
+            <option th:each="ramType : ${ramTypeSet}" th:value="${ramType}" th:text="${ramType}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="ramSpeed">RAM Speed:</label>
+        <select id="ramSpeed" name="ramSpeed">
+            <option value="">All</option>
+            <option th:each="ramSpeed : ${ramSpeedSet}" th:value="${ramSpeed}" th:text="${ramSpeed}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="biosVersion">BIOS Version:</label>
+        <select id="biosVersion" name="biosVersion">
+            <option value="">All</option>
+            <option th:each="biosVersion : ${biosVersionSet}" th:value="${biosVersion}" th:text="${biosVersion}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+    <div>
+        <label for="supportedGpuModel">Supported GPU Model:</label>
+        <select id="supportedGpuModel" name="supportedGpuModel">
+            <option value="">All</option>
+            <option th:each="supportedGpuModel : ${supportedGpuModelSet}" th:value="${supportedGpuModel}" th:text="${supportedGpuModel}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+
 </fieldset>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         </thead>
         <tbody>
             <!--/*@thymesVar id="order" type="Order"*/-->
-            <tr class="tab" th:each="Cpu: ${cpuList}">
+            <tr class="tab" th:each="cpu: ${cpuList}">
                  <td>
-					<p th:text="${'id: ' + cpu.id}"></p>
-					<p th:text="${'CPU Manufacturer: ' + cpu.manufacturer}" class="manufacturer"></p>
-					<p th:text="${'CPU core_count: ' + cpu.coreCount}" class="core"></p>
-					<p th:text="${'CPU performance_core_clock: ' + cpu.performanceCoreClock}"></p>
-					<p th:text="${'CPU performance_boost_clock: ' + cpu.performanceBoostClock}"></p>
-					<p th:text="${'CPU integrated_graphics: ' + cpu.integratedGraphics}"></p>
-					<p th:text="${'Price $: ' + cpu.cpuPriceHistory.lastPrice}" class="price"></p>
-					<p th:text="${'Socket Type: ' + cpu.socketType}"></p>
-					<p th:text="${'TDP: ' + cpu.tdp}"></p>
-					
-					<p th:text="${'Brand: ' + cpu.brand}"></p>
-					<p th:text="${'RAM Type: ' + cpu.ramType}"></p>
-					<p th:text="${'RAM Speed: ' + cpu.ramSpeed}"></p>
+					<td>
+    <p th:text="${'id: ' + cpu.id}"></p>
+    <p th:text="${'CPU Manufacturer: ' + cpu.manufacturer}" class="manufacturer"></p>
+    <p th:text="${'CPU core_count: ' + cpu.coreCount}" class="core"></p>
+    <p th:text="${'CPU performance_core_clock: ' + cpu.performanceCoreClock}"></p>
+    <p th:text="${'CPU performance_boost_clock: ' + cpu.performanceBoostClock}"></p>
+    <p th:text="${'CPU integrated_graphics: ' + cpu.integratedGraphics}"></p>
+    <p th:text="${'Price $: ' + (cpu.getCpu_price_history()?.getLast_price() ?: '100') }" class="price"></p>
+    <p th:text="${'Socket Type: ' + cpu.socketType}"></p>
+    <p th:text="${'TDP: ' + cpu.tdp}"></p>
+
+    <p th:text="${'Brand: ' + cpu.brand}"></p>
+    <p th:text="${'CPU Model: ' + cpu.cpuModel}"></p>
+    <p th:text="${'CPU Processor Type: ' + cpu.cpuProcessorType}"></p>
+    <p th:text="${'Chipset: ' + cpu.chipset}"></p>
+    <p th:text="${'RAM Type: ' + cpu.ramType}"></p>
+    <p th:text="${'RAM Speed: ' + cpu.ramSpeed}"></p>
+    <p th:text="${'BIOS Version: ' + cpu.biosVersion}"></p>
+    <p th:text="${'Supported GPU Model: ' + cpu.supportedGpuModel}"></p>
+    <!-- Add more fields as needed -->
+</td>
+
+
 					<!-- Add more fields as needed -->
 				</td>
                 <td>
                     <img th:src="@{/css/Cpu.png}" alt="CPU Image" style="max-width: 200px; max-height: 200px;">
                 </td>
                 <td>
-                    <form th:action="@{/orders/chooseC/{id}(id=${Cpu.getId()})}" method="post">
+                    <form th:action="@{/orders/chooseC/{id}(id=${cpu.getId()})}" method="post">
                         <button type="submit" name="action" value="add">Add</button>
                     </form>
                 </td>
@@ -75,9 +232,61 @@
         var minCoresSelect = document.getElementById('minCores');
         var minCores = minCoresSelect.options[minCoresSelect.selectedIndex].value;
 
-        var
+        var tdpSelect = document.getElementById('tdp');
+        var tdp = tdpSelect.options[tdpSelect.selectedIndex].value;
 
- rows = document.getElementsByClassName('tab');
+        var coreCountSelect = document.getElementById('coreCount');
+        var coreCount = coreCountSelect.options[coreCountSelect.selectedIndex].value;
+
+        var manufacturerSelect = document.getElementById('manufacturer');
+        var manufacturer = manufacturerSelect.options[manufacturerSelect.selectedIndex].value;
+
+        var performanceCoreClockSelect = document.getElementById('performanceCoreClock');
+        var performanceCoreClock = performanceCoreClockSelect.options[performanceCoreClockSelect.selectedIndex].value;
+
+        var performanceBoostClockSelect = document.getElementById('performanceBoostClock');
+        var performanceBoostClock = performanceBoostClockSelect.options[performanceBoostClockSelect.selectedIndex].value;
+
+        var integratedGraphicsSelect = document.getElementById('integratedGraphics');
+        var integratedGraphics = integratedGraphicsSelect.options[integratedGraphicsSelect.selectedIndex].value;
+
+        var socketTypeSelect = document.getElementById('socketType');
+        var socketType = socketTypeSelect.options[socketTypeSelect.selectedIndex].value;
+
+        var threadsSelect = document.getElementById('threads');
+        var threads = threadsSelect.options[threadsSelect.selectedIndex].value;
+
+        var wattageSelect = document.getElementById('wattage');
+        var wattage = wattageSelect.options[wattageSelect.selectedIndex].value;
+
+        var cpuSpeedSelect = document.getElementById('cpuSpeed');
+        var cpuSpeed = cpuSpeedSelect.options[cpuSpeedSelect.selectedIndex].value;
+
+        var brandSelect = document.getElementById('brand');
+        var brand = brandSelect.options[brandSelect.selectedIndex].value;
+
+        var cpuModelSelect = document.getElementById('cpuModel');
+        var cpuModel = cpuModelSelect.options[cpuModelSelect.selectedIndex].value;
+
+        var cpuProcessorTypeSelect = document.getElementById('cpuProcessorType');
+        var cpuProcessorType = cpuProcessorTypeSelect.options[cpuProcessorTypeSelect.selectedIndex].value;
+
+        var chipsetSelect = document.getElementById('chipset');
+        var chipset = chipsetSelect.options[chipsetSelect.selectedIndex].value;
+
+        var ramTypeSelect = document.getElementById('ramType');
+        var ramType = ramTypeSelect.options[ramTypeSelect.selectedIndex].value;
+
+        var ramSpeedSelect = document.getElementById('ramSpeed');
+        var ramSpeed = ramSpeedSelect.options[ramSpeedSelect.selectedIndex].value;
+
+        var biosVersionSelect = document.getElementById('biosVersion');
+        var biosVersion = biosVersionSelect.options[biosVersionSelect.selectedIndex].value;
+
+        var supportedGpuModelSelect = document.getElementById('supportedGpuModel');
+        var supportedGpuModel = supportedGpuModelSelect.options[supportedGpuModelSelect.selectedIndex].value;
+
+        var rows = document.getElementsByClassName('tab');
 
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
@@ -87,7 +296,30 @@
             var coreElement = row.getElementsByClassName('core')[0];
             var cores = parseInt(coreElement.textContent.replace('CPU core_count: ', ''));
 
-            if ((minPrice === '' || price >= minPrice) && (minCores === '' || cores >= minCores)) {
+            // Apply all the filters
+
+            if (
+                (minPrice === '' || price >= minPrice) &&
+                (minCores === '' || cores >= minCores) &&
+                (tdp === '' || tdp === row.getAttribute('data-tdp')) &&
+                (coreCount === '' || coreCount === row.getAttribute('data-coreCount')) &&
+                (manufacturer === '' || manufacturer === row.getAttribute('data-manufacturer')) &&
+                (performanceCoreClock === '' || performanceCoreClock === row.getAttribute('data-performanceCoreClock')) &&
+                (performanceBoostClock === '' || performanceBoostClock === row.getAttribute('data-performanceBoostClock')) &&
+                (integratedGraphics === '' || integratedGraphics === row.getAttribute('data-integratedGraphics')) &&
+                (socketType === '' || socketType === row.getAttribute('data-socketType')) &&
+                (threads === '' || threads === row.getAttribute('data-threads')) &&
+                (wattage === '' || wattage === row.getAttribute('data-wattage')) &&
+                (cpuSpeed === '' || cpuSpeed === row.getAttribute('data-cpuSpeed')) &&
+                (brand === '' || brand === row.getAttribute('data-brand')) &&
+                (cpuModel === '' || cpuModel === row.getAttribute('data-cpuModel')) &&
+                (cpuProcessorType === '' || cpuProcessorType === row.getAttribute('data-cpuProcessorType')) &&
+                (chipset === '' || chipset === row.getAttribute('data-chipset')) &&
+                (ramType === '' || ramType === row.getAttribute('data-ramType')) &&
+                (ramSpeed === '' || ramSpeed === row.getAttribute('data-ramSpeed')) &&
+                (biosVersion === '' || biosVersion === row.getAttribute('data-biosVersion')) &&
+                (supportedGpuModel === '' || supportedGpuModel === row.getAttribute('data-supportedGpuModel'))
+            ) {
                 row.style.display = 'table-row';
             } else {
                 row.style.display = 'none';

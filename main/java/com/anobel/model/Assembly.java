@@ -1,9 +1,6 @@
 package com.anobel.model;
 
 import com.anobel.model.parts.*;
-import com.anobel.model.parts.PowerSupply;
-import com.anobel.model.parts.ComputerCase;
-import com.anobel.model.parts.CpuCooler;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

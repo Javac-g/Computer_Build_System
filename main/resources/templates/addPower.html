@@ -142,7 +142,7 @@
 
 <div class="container">
     <div class="row">
-        <h1 th:text="${'Choose your Storage:'}"></h1>
+        <h1 th:text="${'Choose your Power Supply:'}"></h1>
     </div>
 
     <fieldset>
@@ -178,21 +178,19 @@
         </thead>
         <tbody>
         <!--/*@thymesVar id="order" type="Order"*/-->
-        <tr class="tab" th:each="power: ${powerList}">
+        <tr class="tab" th:each="power: ${powerSupplyList}">
             <form th:action="@{/orders/choosePower/{id}(id=${power.getId()})}" method="post">
                 <td>
-                    <p th:text="${'Manufacturer: ' + storage.getManufacturer()}"></p>
+                    
                     <p th:text="${'Power Supply model: ' + power.getModel()}"></p>
                     <p th:text="${'Power Supply wattage: ' + power.getWattage()}"></p>
-                    <p th:text="${'Power Supply length: ' + power.getLength()}"></p>
+                    
                     <p th:text="${'Power Supply power connector: ' + power.getPowerConnector()}"></p>
                     <p th:text="${'Power Supply brand: ' + power.getBrand()}"></p>
-                    <p th:text="${'Price $: ' + (power.getPowerSupply_price_history()?.getLast_price() ?: '100')}"
+                    <p th:text="${'Price $: ' + (power.getPowerSupply_price_history()?.getLast_price()?: '100')}"
                        class="price"></p>
                 </td>
-                <td>
-                    <img th:src="@{/css/Storage.png}" alt="Storage Image" style="max-width: 200px; max-height: 200px;">
-                </td>
+                
                 <td><button type="submit" name="action" value="add">Add</button></td>
             </form>
         </tr>

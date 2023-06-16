@@ -1,4 +1,4 @@
-
+package com.anobel.model.parts;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +29,6 @@ public class PowerSupply {
     @Column(name = "efficiency")
     private String efficiency;
     
-    @Column(name = "length")
-    private Integer length;
     
     @Column(name = "power_connector")
     private String powerConnector;

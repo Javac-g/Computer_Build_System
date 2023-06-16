@@ -31,8 +31,7 @@ public class Gpu {
     @Column(name = "chipset")
     private String chipset;
 
-    @Column(name = "price_id")
-    private Integer priceId;
+    
 
     @Column(name = "tdp")
     private Integer tdp;

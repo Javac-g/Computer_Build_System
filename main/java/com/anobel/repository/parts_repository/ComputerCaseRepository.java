@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ComputerCaseRepository extends JpaRepository<ComputerCase,Long> {
     @Procedure(procedureName = "get_comp_case")
-    List<ComputerCase> getCompatibleCases(
+    List<ComputerCase> getCompatible(
         @Param("motherboard_id") Integer motherboardId,
         @Param("cooler_id") Integer coolerId,
         @Param("gpu_id") Integer gpuId,

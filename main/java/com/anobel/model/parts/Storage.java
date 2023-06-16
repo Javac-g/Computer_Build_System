@@ -28,8 +28,7 @@ public class Storage {
     @Column(name = "manufacturer")
     private String manufacturer;
 
-    @Column(name = "price_id")
-    private Integer priceId;
+    
 
     @Column(name = "interface")
     private String interfaceType;

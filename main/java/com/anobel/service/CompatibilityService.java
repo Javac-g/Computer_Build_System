@@ -12,6 +12,5 @@ public interface CompatibilityService {
     List<Ram> compatibleRam(Motherboard motherboard);
     List<Gpu> compatibleGpu(Motherboard motherboard);
     List<Storage> compatibleStorage(Motherboard motherboard);
-	List<PowerSupply> compartiblePS(Integer motherboardId, Integer cpuId, Integer ramId, Integer gpuId, Integer storageId);
-	List<ComputerCase> compartibleCase(Integer motherboardId, Integer coolerId, Integer gpuId, Integer psuId);
+	
 }

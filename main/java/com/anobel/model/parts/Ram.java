@@ -28,8 +28,7 @@ public class Ram {
     @Column(name = "manufacturer")
     private String manufacturer;
 
-    @Column(name = "price_id")
-    private Integer priceId;
+  
 
     @Column(name = "capacity")
     private Integer capacity;

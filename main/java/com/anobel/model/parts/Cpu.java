@@ -37,8 +37,7 @@ public class Cpu {
     @Column(name = "integrated_graphics")
     private String integratedGraphics;
 
-    @Column(name = "price_id")
-    private Integer priceId;
+    
 
     @Column(name = "socket_type")
     private String socketType;

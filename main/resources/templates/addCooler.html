@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/Style.css}" />
     <style>
         /* Add custom styles for the component selection page here */
-        .container {
+      .container {
             margin-top: 20px;
         }
 
@@ -142,8 +142,9 @@
 
 <div class="container">
     <div class="row">
-        <h1 th:text="${'Choose your RAM:'}"></h1>
+        <h1 th:text="${'Choose your Cpu cooler:'}"></h1>
     </div>
+
     <fieldset>
         <legend>Filters:</legend>
         <div>
@@ -155,63 +156,76 @@
             <button onclick="applyFilter()">Apply</button>
         </div>
         <div>
-            <label for="minType">RAM type:</label>
-            <select id="minType" name="minType">
+            <label for="minbrand">Brand:</label>
+            <select id="minbrand" name="minbrand">
                 <option value="">All</option>
-                <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+                <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand}"></option>
             </select>
             <button onclick="applyFilter()">Apply</button>
         </div>
         <div>
-            <label for="minSpeed">RAM speed:</label>
-            <select id="minSpeed" name="minSpeed">
+            <label for="minModel">Height</label>
+            <select id="minModel" name="minModel">
                 <option value="">All</option>
-                <option th:each="speed : ${speeds}" th:value="${speed}" th:text="${speed}"></option>
+                <option th:each="model : ${models}" th:value="${model}" th:text="${model}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
+        <div>
+            <label for="minModel">Fan size</label>
+            <select id="minModel" name="minModel">
+                <option value="">All</option>
+                <option th:each="model : ${models}" th:value="${model}" th:text="${model}"></option>
             </select>
             <button onclick="applyFilter()">Apply</button>
         </div>
     </fieldset>
+
     <table class="table table-striped table-bordered">
-        <thead class="table-dark"></thead>
+        <thead class="table-dark">
+        </thead>
         <tbody>
-            <!--/*@thymesVar id="order" type="Order"*/-->
-            <tr class="tab" th:each="ram: ${ramList}">
-                <form th:action="@{/orders/chooseR/{id}(id=${ram.getId()})}" method="post">
-                    <td>
-                        <p th:text="${'id: ' + ram.getId()}"></p>
-                        <p th:text="${'Manufacturer: ' + ram.getManufacturer()}"></p>
-                        <p th:text="${'RAM Speed: ' + ram.getSpeed()}" class="speed"></p>
-                        <p th:text="${'RAM Type: ' + ram.getRamType()}" class="type"></p>
-                        <p th:text="${'RAM Modules: ' + ram.getModules()}"></p>
-                        <p th:text="${'Price $: ' + (ram.getRam_price_history()?.getLast_price() ?: '100')}" class="price"></p>
-                    </td>
-                    <td>
-                        <img th:src="@{/css/RAM.jpg}" alt="Ram Image" style="max-width: 200px; max-height: 200px;">
-                    </td>
-                    <td><button type="submit" name="action" value="add">Add</button></td>
-                </form>
-            </tr>
+        <!--/*@thymesVar id="order" type="Order"*/-->
+        <tr class="tab" th:each="cooler: ${cpuCoolerList}">
+            <form th:action="@{/orders/chooseCooler/{id}(id=${cooler.getId()})}" method="post">
+                <td>
+                    
+                    <p th:text="${'Cooler Name: ' + cooler.getName()}"></p>
+<p th:text="${'Cooler Brand: ' + cooler.getBrand()}"></p>
+<p th:text="${'Cooler Height: ' + cooler.getHeight()}"></p>
+<p th:text="${'Cooler Fan Size (mm): ' + cooler.getFanSize()}"></p>
+<p th:text="${'Cooler Wattage: ' + cooler.getWattage()}"></p>
+
+                    <p th:text="${'Price $: ' + (cooler.getCpuCooler_price_history()?.getLast_price() ?: '100')}"
+                       class="price"></p>
+                </td>
+                
+                <td><button type="submit" name="action" value="add">Add</button></td>
+            </form>
+        </tr>
         </tbody>
     </table>
 </div>
 
 <script>
     function applyFilter() {
-        var minPrice = document.getElementById('minPrice').value;
-        var minType = document.getElementById('minType').value;
-        var minSpeed = document.getElementById('minSpeed').value;
+        var minPrice = parseInt(document.getElementById('minPrice').value);
+        var minBrand = document.getElementById('minbrand').value;
+        var minModel = document.getElementById('minModel').value;
         var rows = document.getElementsByClassName('tab');
 
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
             var priceElement = row.getElementsByClassName('price')[0];
-            var typeElement = row.getElementsByClassName('type')[0];
-            var speedElement = row.getElementsByClassName('speed')[0];
+            var modelElement = row.getElementsByTagName('p')[1];
+            var brandElement = row.getElementsByTagName('p')[5];
             var price = parseInt(priceElement.textContent.replace('Price $: ', ''));
-            var type = typeElement.textContent.replace('RAM Type: ', '');
-            var speed = parseInt(speedElement.textContent.replace('RAM Speed: ', ''));
+            var model = modelElement.textContent.replace('Power Supply model: ', '');
+            var brand = brandElement.textContent.replace('Power Supply brand: ', '');
 
-            if ((minPrice === '' || price >= minPrice) && (minType === '' || type === minType) && (minSpeed === '' || speed >= minSpeed)) {
+            if ((isNaN(minPrice) || price >= minPrice) &&
+                (minBrand === '' || brand === minBrand) &&
+                (minModel === '' || model === minModel)) {
                 row.style.display = 'table-row';
             } else {
                 row.style.display = 'none';
@@ -219,6 +233,8 @@
         }
     }
 </script>
+
+
 
 </body>
 </html>

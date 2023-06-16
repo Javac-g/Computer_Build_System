@@ -181,11 +181,15 @@
         <tr class="tab" th:each="storage: ${storageList}">
             <form th:action="@{/orders/chooseS/{id}(id=${storage.getId()})}" method="post">
                 <td>
-                    <p th:text="${'Manufacturer: ' + storage.getManufacturer()}"></p>
-                    <p th:text="${'Storage Capacity: ' + storage.getCapacity() + ' GB'}"></p>
-                    <p th:text="${'Storage Type: ' + storage.getType()}"></p>
-                    <p th:text="${'Price $: ' + (storage.getStorage_price_history()?.getLast_price() ?: '100')}"
-                       class="price"></p>
+                    <p th:text="${'Storage Capacity: ' + storage.getCapacity()}"></p>
+<p th:text="${'Storage Type: ' + storage.getType()}"></p>
+<p th:text="${'Storage Manufacturer: ' + storage.getManufacturer()}"></p>
+<p th:text="${'Storage Interface: ' + storage.getInterfaceType()}"></p>
+<p th:text="${'Storage Cache Size: ' + storage.getCacheSize()}"></p>
+<p th:text="${'Storage Wattage: ' + storage.getWattage()}"></p>
+<p th:text="${'Storage Read Speed: ' + storage.getReadSpeed()}"></p>
+<p th:text="${'Storage Write Speed: ' + storage.getWriteSpeed()}"></p>
+
                 </td>
                 <td>
                     <img th:src="@{/css/Storage.png}" alt="Storage Image" style="max-width: 200px; max-height: 200px;">

@@ -163,6 +163,23 @@
         </select>
         <button onclick="applyFilter()">Apply</button>
     </div>
+    <div>
+        <label for="Brand">Brand:</label>
+        <select id="Brand" name="Brand">
+            <option value="">All</option>
+            <option th:each="price : ${prices}" th:value="${price}" th:text="${price}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
+
+    <div>
+        <label for="minMemory">Chipset:</label>
+        <select id="minMemory" name="minMemory">
+            <option value="">All</option>
+            <option th:each="memory : ${maxmem}" th:value="${memory}" th:text="${memory}"></option>
+        </select>
+        <button onclick="applyFilter()">Apply</button>
+    </div>
  </fieldset>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
@@ -172,13 +189,16 @@
         <tr class="tab" th:each="gpu: ${gpuList}">
             <form th:action="@{/orders/chooseG/{id}(id=${gpu.getId()})}" method="post">
                 <td>
-                    <p th:text="${'Manufacturer: ' + gpu.getManufacturer()}"></p>
-                    <p class="memory" th:text="${'GPU Max Memory: ' + gpu.getMemory() + ' GB'}"></p>
-                    <p th:text="${'GPU Core Clock: ' + gpu.getCore_clock()}"></p>
-                    <p th:text="${'GPU Boost Clock: ' + gpu.getBoost_clock()}"></p>
-                    <p th:text="${'GPU Chipset: ' + gpu.getChipset()}"></p>
-                    <p th:text="${'Price $: ' + (gpu.getGpu_price_history()?.getLast_price() ?: '100')}"
-                       class="price"></p>
+                    <p th:text="${'GPU Length: ' + gpu.getLength()}"></p>
+<p th:text="${'GPU Manufacturer: ' + gpu.getManufacturer()}"></p>
+<p th:text="${'GPU Chipset: ' + gpu.getChipset()}"></p>
+<p th:text="${'GPU TDP: ' + gpu.getTdp()}"></p>
+<p th:text="${'GPU PCIe Type: ' + gpu.getPcieType()}"></p>
+<p th:text="${'GPU Wattage: ' + gpu.getWattage()}"></p>
+<p th:text="${'GPU Model: ' + gpu.getModel()}"></p>
+<p th:text="${'GPU PCIe Slot: ' + gpu.getGpuPcieSlot()}"></p>
+<p th:text="${'GPU Form Factor: ' + gpu.getGpuFormFactor()}"></p>
+
                 </td>
                 <td>
                     <img th:src="@{/css/Gpu.png}" alt="GPU Image" style="max-width: 200px; max-height: 200px;">

@@ -126,22 +126,55 @@
         <input type="number" id="minPrice" name="minPrice">
         <button onclick="applyFilter()">Apply</button>
     </div>
+    <div>
+            <label for="minModel">Model</label>
+            <select id="minModel" name="minModel">
+                <option value="">All</option>
+                <option th:each="model : ${models}" th:value="${model}" th:text="${model}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
+        <div>
+            <label for="minModel">Chipset</label>
+            <select id="minModel" name="minModel">
+                <option value="">All</option>
+                <option th:each="model : ${models}" th:value="${model}" th:text="${model}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
+        <div>
+            <label for="minModel">Ram type</label>
+            <select id="minModel" name="minModel">
+                <option value="">All</option>
+                <option th:each="model : ${models}" th:value="${model}" th:text="${model}"></option>
+            </select>
+            <button onclick="applyFilter()">Apply</button>
+        </div>
 </fieldset>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         </thead>
         <tbody>
         <!--/*@thymesVar id="order" type="Order"*/-->
-        <tr class="tab" th:each="Motherboard: ${motherboardList}">
-            <form th:action="@{/orders/chooseM/{id}(id=${Motherboard.getId()})}" method="post">
+        <tr class="tab" th:each="motherboard: ${motherboardList}">
+            <form th:action="@{/orders/chooseM/{id}(id=${motherboard.getId()})}" method="post">
                 <td>
-                    <p th:text="${'id: ' + Motherboard.getId()}"></p>
-                    <p th:text="${'Manufacturer: ' + Motherboard.getManufacturer()}"></p>
-                    <p th:text="${'Memory slots: ' + Motherboard.getRam_slots()}"></p>
-                    <p th:text="${'Socket: ' + Motherboard.getSocket_cpu()}"></p>
-                    <p th:text="${'Form factor: ' + Motherboard.getForm_factor()}"></p>
-                    <p th:text="${'Price $: ' + Motherboard.getMotherboard_price_history().getLast_price()}"
-                       class="price"></p>
+                    <p th:text="${'id: ' + motherboard.getId()}"></p>
+<p th:text="${'Memory slots: ' + motherboard.getRamCapacity()}"></p>
+<p th:text="${'Socket: ' + motherboard.getSocketType()}"></p>
+<p th:text="${'Form factor: ' + motherboard.getFormFactor()}"></p>
+<p th:text="${'Price $: ' + (motherboard.getMotherboard_price_history()?.getLast_price() ?: '100')}" class="price"></p>
+<p th:text="${'Model: ' + motherboard.getModel()}"></p>
+<p th:text="${'Chipset: ' + motherboard.getChipset()}"></p>
+<p th:text="${'RAM Type: ' + motherboard.getRamType()}"></p>
+<p th:text="${'RAM Speed: ' + motherboard.getRamSpeed()}"></p>
+<p th:text="${'TDP: ' + motherboard.getTdp()}"></p>
+<p th:text="${'BIOS Version: ' + motherboard.getBiosVersion()}"></p>
+<p th:text="${'Brand: ' + motherboard.getBrand()}"></p>
+<p th:text="${'PCIe Type: ' + motherboard.getPcieType()}"></p>
+<p th:text="${'Storage Ports: ' + motherboard.getStoragePorts()}"></p>
+<p th:text="${'Wattage: ' + motherboard.getWattage()}"></p>
+
                 </td>
                 <td>
                     <img th:src="@{/css/Motherboard.png}" alt="Motherboard Image"

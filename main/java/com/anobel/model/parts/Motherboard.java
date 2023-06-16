@@ -18,11 +18,10 @@ public class Motherboard {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id",nullable = false)
     private Long id;
+   
+
 	 @Column(name = "socket_type")
     private String socketType;
-
-    @Column(name = "price_id")
-    private Integer priceId;
 
     @Column(name = "model")
     private String model;

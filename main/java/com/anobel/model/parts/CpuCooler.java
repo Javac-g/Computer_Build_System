@@ -1,4 +1,4 @@
-
+package com.anobel.model.parts;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
