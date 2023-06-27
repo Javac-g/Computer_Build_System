@@ -1,0 +1,271 @@
+
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+<link rel='stylesheet' th:href='@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css}'>
+<link rel="stylesheet" th:href="@{/css/order_style.css}">
+</head>
+<body>
+ 
+
+<div>
+  
+<div class="banner">
+  
+  <div class="main-cart">
+ <table th:object = "${assembly}">>
+	<tr>
+	<td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" th:src="@{'/css/cpu/' + ${assembly.getCpu().getCpuModel()} + '_core.jpg'}" width = "185" height = "185" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">CPU processor</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5></h5>
+		
+        <p th:text="${'id: ' + assembly.getCpu().getId()}"></p>
+		<p th:text="${'CPU Manufacturer: ' + assembly.getCpu().getManufacturer()}"></p>
+		<p th:text="${'CPU core_count: ' + assembly.getCpu().getCoreCount()}" ></p>
+		<p th:text="${'CPU Brand: ' + assembly.getCpu().getBrand()}"></p>
+		<br>
+	
+    </div>
+    <div class="purchase">
+      <p class="product-price" th:text="${'Price: ' + assembly.getCpu().getCpu_price_history().getLast_price() + ' $'}"></p>
+     <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+  </div>
+</div></td><td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://purepng.com/public/uploads/large/apple-watch-pcq.png" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">Graphic Card</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>Youâ€™ve never seen a watch like this</h5>
+      <p>The most advanced Apple Watch yet, featuring the Always-On Retina display, the ECG app, international emergency calling, fall detection and a builtâ€‘in compass.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 40900</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td><td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://pngimg.com/uploads/macbook/macbook_PNG8.png" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">RAM</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>The best for the brightest</h5>
+      <p>Designed for those who defy limits and change the world, the new MacBook Pro is by far the most powerful notebook weâ€™ve ever made. itâ€™s the ultimate pro notebook for the ultimate user.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 199900</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td><td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-pro-midnight-green-select-2019?wid=940&amp;hei=1112&amp;fmt=png-alpha&amp;qlt=80&amp;.v=1566954990073" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">Storage</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>Pro cameras. Pro display. Pro performance</h5>
+      <p>A mindâ€‘blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 106600</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td></tr><tr><td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH?wid=940&amp;hei=1112&amp;fmt=png-alpha&amp;qlt=80&amp;.v=1583553704156" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">Motherboard</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>Your next computer is not a computer</h5>
+      <p>Itâ€™s a magical piece of glass. Itâ€™s so fast most PC laptops canâ€™t catch up. And you can use it with touch, pencil, keyboard and now trackpad. Itâ€™s the new iPad Pro.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 71900</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td>
+<td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH?wid=940&amp;hei=1112&amp;fmt=png-alpha&amp;qlt=80&amp;.v=1583553704156" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">Computer Case</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>Your next computer is not a computer</h5>
+      <p>Itâ€™s a magical piece of glass. Itâ€™s so fast most PC laptops canâ€™t catch up. And you can use it with touch, pencil, keyboard and now trackpad. Itâ€™s the new iPad Pro.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 71900</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td>
+<td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH?wid=940&amp;hei=1112&amp;fmt=png-alpha&amp;qlt=80&amp;.v=1583553704156" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">Power Supply</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>Your next computer is not a computer</h5>
+      <p>Itâ€™s a magical piece of glass. Itâ€™s so fast most PC laptops canâ€™t catch up. And you can use it with touch, pencil, keyboard and now trackpad. Itâ€™s the new iPad Pro.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 71900</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td>
+<td>
+<div class="card">
+  <div class="top-bar">
+    <i class="fab fa-apple"></i>
+    <em class="stocks">In Stock</em>
+  </div>
+  <div class="img-container">
+    <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH?wid=940&amp;hei=1112&amp;fmt=png-alpha&amp;qlt=80&amp;.v=1583553704156" alt="">
+    <div class="out-of-stock-cover"><span>Out Of Stock</span></div>
+  </div>
+  <div class="details">
+    <div class="name-fav">
+      <strong class="product-name">CPU Cooler</strong>
+      <button onclick="this.classList.toggle(&quot;fav&quot;)" class="heart"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="wrapper">
+      <h5>Your next computer is not a computer</h5>
+      <p>Itâ€™s a magical piece of glass. Itâ€™s so fast most PC laptops canâ€™t catch up. And you can use it with touch, pencil, keyboard and now trackpad. Itâ€™s the new iPad Pro.</p>
+    </div>
+    <div class="purchase">
+      <p class="product-price">â‚¹ 71900</p>
+      <span class="btn-add">
+<div>
+  <button onclick="addItem(this)" class="add-btn">Details <i class="fas fa-chevron-right"></i></button>
+</div></span>
+    </div>
+  </div>
+</div></td></tr></table></table></div>
+
+  <div class="nav">
+    <button onclick="sideNav(1)"><i class="fas fa-shopping-cart" style="font-size:2rem;"></i></button>
+    <span class="total-qty">0</span>
+  </div>
+  <div onclick="sideNav(0)" class="cover"></div>
+  <div class="cover purchase-cover"></div>
+  <div class="cart">
+<div class="side-nav">
+  <button onclick="sideNav(0)"><i class="fas fa-times"></i></button>
+  <h2>Cart</h2>
+  <div class="cart-items"></div>
+  <div class="final">
+    <strong>Total: â‚¹ <span class="total">0</span>.00/-</strong>
+    <div class="action">
+      <button onclick="buy(1)" class="btn buy">Purchase <i class="fas fa-credit-card" style="color:#6665dd;"></i></button>
+      <button onclick="clearCart()" class="btn clear">Clear Cart <i class="fas fa-trash" style="color:#bb342f;"></i></button>
+    </div>
+  </div>
+</div></div>
+  <div class="stock-limit">
+    <em>You Can Only Buy 10 Items For Each Product</em>
+    <button class="btn-ok" onclick="limitPurchase(this)">Okay</button>
+  </div>
+<div class="order-now"></div>
+</div>
+</div></div>
+ 
+</body>
+</html>

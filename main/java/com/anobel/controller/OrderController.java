@@ -644,7 +644,7 @@ public class OrderController {
 		Order order = orderService.findById(id);
 		Assembly assembly = order.getAssembly();
 		model.addAttribute("assembly",assembly);
-		return  "assembly_info";
+		return  "Order";
 	}
 	
 	@GetMapping("/new/{client_id}")

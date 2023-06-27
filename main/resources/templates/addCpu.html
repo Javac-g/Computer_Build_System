@@ -212,7 +212,8 @@
 					<!-- Add more fields as needed -->
 				</td>
                 <td>
-                    <img th:src="@{/css/Cpu.png}" alt="CPU Image" style="max-width: 200px; max-height: 200px;">
+                    
+					<img th:src="@{'/css/' + ${cpu.getCpuModel} + '.jpg'}" alt="CPU Image" style="max-width: 200px; max-height: 200px;">
                 </td>
                 <td>
                     <form th:action="@{/orders/chooseC/{id}(id=${cpu.getId()})}" method="post">

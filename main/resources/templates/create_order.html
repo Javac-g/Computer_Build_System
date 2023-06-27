@@ -91,6 +91,9 @@
                     <label th:text="${session.selectedMotherboard != null ? 
                         '- Cost: ' + session.selectedMotherboard.motherboard_price_history.getLast_price() + ' $' : '0 $'}"></label>
                 </td>
+				<td><img th:if="${session.selectedMotherboard != null}" th:src="@{'/css/' + ${session.selectedMotherboard.getModel()} + '.jpg'}" alt="Motherboard Image" style="max-width: 200px; max-height: 200px;">
+						<img th:unless="${session.selectedCpu != null}" th:src="@{'/css/Motherboard.png'}" alt="Default Motherboard Image" style="max-width: 200px; max-height: 200px;">
+				</td>
             </tr>
 
             <!-- CPU -->
@@ -104,7 +107,13 @@
                     <label th:text="'Brand: ' + ${session.selectedCpu?.manufacturer ?: 'Not chosen'}"></label>
                     <label th:text="${session.selectedCpu != null ? 
                         '- Cost: ' + session.selectedCpu.cpu_price_history.getLast_price() + ' $' : '0 $'}"></label>
+	
+
+
                 </td>
+				<td><img th:if="${session.selectedCpu != null}" th:src="@{'/css/cpu/' + ${session.selectedCpu.getCpuModel()} + '.jpg'}" alt="CPU Image" style="max-width: 200px; max-height: 200px;">
+						<img th:unless="${session.selectedCpu != null}" th:src="@{'/css/CPU.png'}" alt="Default CPU Image" style="max-width: 200px; max-height: 200px;">
+				</td>
             </tr>
 
             <!-- GPU -->
@@ -119,6 +128,9 @@
                     <label th:text="${session.selectedGpu != null ? 
                         '- Cost: ' + session.selectedGpu.gpu_price_history.getLast_price() + ' $' : '0 $'}"></label>
                 </td>
+				<td><img th:if="${session.selectedGpu != null}" th:src="@{'/css/' + ${session.selectedGpu.getManufacturer()} + '.jpg'}" alt="GPU Image" style="max-width: 200px; max-height: 200px;">
+						<img th:unless="${session.selectedGpu != null}" th:src="@{'/css/GPU.png'}" alt="Default GPU Image" style="max-width: 200px; max-height: 200px;">
+				</td>
             </tr>
 
             <!-- RAM -->
@@ -133,6 +145,9 @@
                     <label th:text="${session.selectedRam != null ? 
                         '- Cost: ' + session.selectedRam.ram_price_history.getLast_price() + ' $' : '0 $'}"></label>
                 </td>
+				<td><img th:if="${session.selectedRam != null}" th:src="@{'/css/' + ${session.selectedRam.getManufacturer()} + '.jpg'}" alt="RAM Image" style="max-width: 200px; max-height: 200px;">
+						<img th:unless="${session.selectedCpu != null}" th:src="@{'/css/RAM.jpg'}" alt="Default RAM Image" style="max-width: 200px; max-height: 200px;">
+				</td>
             </tr>
 
             <!-- Storage -->
