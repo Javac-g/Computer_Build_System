@@ -14,6 +14,6 @@ I divided my project on few stages.<br>
 
 4)Create web interface.I decided to use thymeleaf wrapper.Its faster than JSP and more clear.(And many other benefits)<br>
 ###### Database scheme 
-<img src="https://github.com/Javac-g/Computer_Build_System/blob/master/new.png">
+<img src="https://github.com/Javac-g/Computer_Build_System/blob/master/pc_system_diagramm.png">
 
 
