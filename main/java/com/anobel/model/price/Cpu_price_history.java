@@ -25,4 +25,15 @@ public class Cpu_price_history {
     private LocalDateTime start_price_date;
     @Column(name = "last_price_date")
     private LocalDateTime last_price_date;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public void updatePriceHistory() {
+        List<Cpu> cpus = partPriceService.getPrices();
+        
+        for (Cpu cpu : cpus) {
+            String sql = "INSERT INTO cpu_price_history (id, last_price, last_date) VALUES (?, ?, ?, ?)";
+            jdbcTemplate.update(sql, cpu.getId(), cpu.getLastPrice()cpu.getLast_date());
+        }
+    }
 }
