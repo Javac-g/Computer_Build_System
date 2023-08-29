@@ -25,6 +25,8 @@ I divided my project on few stages.<br>
 
 3)Filter results by (purpose,price)<br>
 
+<img src = "filter.png"></img>
+
 4)Create web interface.I decided to use thymeleaf wrapper.Its faster than JSP and more clear.(And many other benefits)<br>
 
 
