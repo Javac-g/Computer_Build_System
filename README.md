@@ -1,9 +1,11 @@
-### Personal computer assembly system.
-This is my graduation university project.<br>
+### Personal Computer Assembly System
+This is my graduation university project.
 
-The porpose of my project is to create a informational system, which can calculate prise of assembling custom pc and configure components compatibility.<br>
+The purpose of my project is to create an informational system that can calculate the price of assembling a custom PC and configure component compatibility.
 
-I divided my project on few stages.<br>
+I have divided my project into several stages."
+
+These revisions should make your text more grammatically correct and easier to understand.<br>
 
 1)Create database architecture and fill csv with suitable components list.I have choose best on the market.
  - CPU
