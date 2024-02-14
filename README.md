@@ -4,8 +4,7 @@ This is my graduation university project.
 The purpose of my project is to create an informational system that can calculate the price of assembling a custom PC and configure component compatibility.
 
 I have divided my project into several stages."
-
-These revisions should make your text more grammatically correct and easier to understand.<br>
+<br>
 
 1)Create database architecture and fill csv with suitable components list.I have choose best on the market.
  - CPU
