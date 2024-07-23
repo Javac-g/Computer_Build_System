@@ -1,0 +1,2 @@
+1. gradle build
+2. java -jar build/libs/spring-security-practice-0.1.0.jar
