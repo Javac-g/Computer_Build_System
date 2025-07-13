@@ -1,34 +1,87 @@
-### Personal Computer Assembly System
-This is my graduation university project.
+# 💻 Personal Computer Assembly System
 
-The purpose of my project is to create an informational system that can calculate the price of assembling a custom PC and configure component compatibility.
+This is my university graduation project.
 
-I have divided my project into several stages."
-<br>
+The goal of this project is to develop an informational system that allows users to:
+- Estimate the total cost of building a custom PC.
+- Automatically check compatibility between selected components.
 
-1)Create database architecture and fill csv with suitable components list.I have choose best on the market.
- - CPU
- - GPU
- - MotherBoard
- - Storage
- - RAM
- - CPU cooler
- - Computer case
- - Power supply
+---
 
-###### Database scheme 
-<img src="https://github.com/Javac-g/Computer_Build_System/blob/master/pc_system_diagramm.png">
-<br>
+## 🛠️ Project Stages
 
-2)Create algorythm to divide compartible components.<br>
+### 1️⃣ Database Architecture
 
-<img src = "gpu.png"></img>
+I designed the database and populated it with high-quality, market-relevant components:
 
-3)Filter results by (purpose,price)<br>
+- CPU  
+- GPU  
+- Motherboard  
+- Storage  
+- RAM  
+- CPU Cooler  
+- Computer Case  
+- Power Supply  
 
-<img src = "filter.png"></img>
+#### 📊 Database Schema
+![Database Diagram](https://github.com/Javac-g/Computer_Build_System/blob/master/pc_system_diagramm.png)
 
-4)Create web interface.I decided to use thymeleaf wrapper.Its faster than JSP and more clear.(And many other benefits)<br>
+---
 
+### 2️⃣ Compatibility Algorithm
 
+An algorithm was developed to ensure selected components are compatible with each other.
+
+![GPU Compatibility](gpu.png)
+
+---
+
+### 3️⃣ Smart Filtering
+
+Users can filter results based on:
+- Purpose (e.g., gaming, office, editing)
+- Budget
+
+![Filter Screenshot](filter.png)
+
+---
+
+### 4️⃣ Web Interface
+
+I implemented the front-end using **Thymeleaf**, a modern server-side Java template engine.  
+Thymeleaf was chosen over JSP due to its cleaner syntax, better integration with Spring Boot, and improved developer experience.
+
+---
+
+## ✅ Features
+
+- Real-time price calculation  
+- Component compatibility validation  
+- Dynamic filtering system  
+- User-friendly web interface
+
+---
+
+## 📌 Technologies Used
+
+- Java  
+- Spring Boot  
+- Thymeleaf  
+- PostgreSQL  
+- HTML/CSS
+
+---
+
+## 📁 Repository Structure
+
+- `/src` – source code  
+- `/static` – static web assets  
+- `/templates` – Thymeleaf templates  
+- `pc_system_diagramm.png` – database schema
+
+---
+
+## 📬 Contact
+
+Feel free to reach out if you want to collaborate or have any questions.
 
