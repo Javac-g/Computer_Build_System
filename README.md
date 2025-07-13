@@ -1,3 +1,7 @@
+<div id="header">
+  <img src="https://github.com/Javac-g/Computer_Build_System/blob/master/CAS.png?raw=true"/>
+</div>
+
 # 💻 Personal Computer Assembly System
 
 This is my university graduation project.
